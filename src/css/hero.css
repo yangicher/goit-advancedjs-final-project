@@ -1,0 +1,143 @@
+.section.hero {
+    padding-bottom: 80px;
+
+    @media screen and (min-width: 768px) {
+        padding-bottom: 100px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        padding-bottom: 96px;
+    }
+}
+
+.hero > .container {
+    position: relative;
+
+    height: 709px;
+    min-height: 280px;
+    max-width: 335px;
+    padding: 20px 14px 14px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
+    border-radius: 30px;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.hero-title {
+    color: var(--color-white);
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.17;
+    width: 564px;
+    margin: 0;
+    margin-bottom: 32px;
+}
+
+
+.hero-scroll-down {
+    margin-top: 83px;
+}
+
+.scroll-button {
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background-color: var(--color-white);
+    margin-left: auto;
+    color: var(--color-green);
+    transition: color var(--animation), background-color var(--animation);
+}
+
+.scroll-button:hover,
+.scroll-button:focus {
+    color: var(--color-white);
+    background-color: var(--color-green);
+}
+
+.hero-title {
+    color: var(--color-white);
+    font-size: 38px;
+    line-height: 1.05;
+    max-width: 295px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.hero-scroll-down {
+    margin-top: 20px;
+}
+
+.scroll-icon {
+    width: 20px;
+    height: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .hero > .container {
+        height: 857px;
+        max-width: 704px;
+        padding: 260px 32px 32px 32px;
+        border-radius: 30px;
+    }
+
+    .hero-title {
+        width: 488px;
+        font-size: 60px;
+    }
+
+    .scroll-button {
+        position: absolute;
+        width: 38px;
+        height: 38px;
+        bottom: 32px;
+        right: 32px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .hero {
+        padding-bottom: 96px;
+    }
+
+    .hero > .container {
+        height: 629px;
+        max-width: 1152px;
+        padding: 0 64px 96px 64px;
+        border-radius: 30px;
+    }
+
+    .hero-title {
+        width: 564px;
+        font-size: 60px;
+    }
+
+    .scroll-button {
+        position: absolute;
+        width: 38px;
+        height: 38px;
+        bottom: 32px;
+        right: 32px;
+    }
+}

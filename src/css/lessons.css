@@ -1,0 +1,125 @@
+  .lessons .container {
+    padding: 0 20px;
+  }
+  
+  .pricing-section {
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 20px;
+
+    @media screen and (min-width: 1280px) {
+      padding: 0 64px;
+    }
+  }
+
+  .pricing-section .section-description {
+    max-width: 665px;
+  }
+
+  .pricing-section .btn {
+    margin-top: 32px;
+    padding: 16px 0;
+  }
+  
+  .pricing-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    padding: 0;
+    border-radius: 30px;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 400;
+    /* letter-spacing: -0.025em; */
+    list-style: none;
+    margin-top: 64px;
+
+    @media screen and (min-width: 768px) {
+      max-width: 704px;
+      padding: 0;
+      justify-content: start;
+      margin: 64px auto;
+
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-width: 704px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      max-width: 100%;
+      justify-content: center;
+    }
+  }
+  
+  .pricing-item {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-green);
+    border-radius: 20px;
+    padding: 40px 20px;
+    text-align: center;
+    flex: 1 1 300px;
+    max-width: 335px;
+    transition: transform 0.3s ease;
+
+    @media screen and (min-width: 768px) {
+      max-width: 334px;
+      padding: 32px;
+    }
+
+    @media screen and (min-width: 1158px) {
+      max-width: 320px;
+    }
+  }
+  
+  .pricing-item.highlight {
+    color: var(--color-white);
+    background-color: var(--color-green);
+  }
+  
+  .pricing-item.highlight h3,
+  .pricing-item.highlight .price {
+    color: var(--color-white);
+  }
+  .pricing-item h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  
+  .pricing-item .price {
+    white-space: nowrap;
+    text-align: center;
+    display: inline-block; /* Ensures inline alignment */
+    padding: 0 10px; /* Adds spacing for better layout */
+    width: 184px;
+    height: 44px;
+    top: 72px;
+    left: 68px;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 16px;
+  }
+  
+  .pricing-item p {
+    font-size: var(--font-size-14);
+    color: var(--color-dark-gray);
+    line-height: 1.5;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
+  }
+  
+  .pricing-items {
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .pricing-item.highlight .description {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+    

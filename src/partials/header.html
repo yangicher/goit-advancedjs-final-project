@@ -1,19 +1,12 @@
-<header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="{=$icon-path}"></use>
-        </svg>
-      </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+<header class="section header" id="header">
+    <div class="container">
+        <p class="header-logo">english<span class="header-logo_accent">excellence</span>.</p>
+        <load src="/partials/nav.html"/>
+
+        <button type="button" aria-label="Open menu" class="burger-menu" id="burger-btn" onclick="toggleMenu()">
+            <span class="burger-line burger-line-1"></span>
+            <span class="burger-line burger-line-2"></span>
+            <span class="burger-line burger-line-3"></span>
+        </button>
+    </div>
 </header>

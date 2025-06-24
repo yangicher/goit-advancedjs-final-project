@@ -1,0 +1,31 @@
+:root {
+    --color-black: #121417;
+    --color-white: #ffffff;
+    --color-white-10: #FFFFFF1A;
+    --color-white-60: #FFFFFF99;
+    --color-dark-gray: rgba(18, 20, 23, 0.5);
+    --color-green: #4dc274;
+    --color-green-hover: #38ae5f;
+    --color-lightgreen: #d4fde1;
+    --color-lightestgreen: #bee8cc;
+    --color-gray: #f3f5f6;
+    --color-black-50: #12141780;
+
+    --green-gradient: linear-gradient(
+        90deg,
+        var(--color-green) 0%,
+        var(--color-lightestgreen) 100%
+    );
+    --animation-delay: 0.2s;
+    --animation: var(--animation-delay) ease-in-out;
+    --transition: background-color var(--animation);
+    --transition-time-and-func: 750ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    --font-size-18: 18px;
+    --font-size-14: 14px;
+
+    --mobile-min-width: 320px;
+    --mobile-max-width: 375px;
+    --tablet-width: 768px;
+    --desktop-width: 1280px;    
+}

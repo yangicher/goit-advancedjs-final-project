@@ -1,0 +1,330 @@
+.application .section-description {
+    max-width: 709px;
+
+    @media screen and (min-width: 768px) {
+        max-width: 586px;
+    }
+}
+
+.application-block {
+    display: flex;
+}
+
+@media screen and (min-width: 1279px) {
+    .application-block {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 1279px) {
+    .application-card-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 0px 20px 40px 20px;
+        justify-content: flex-end;
+        align-items: center;
+        background-image: url("../img/application/2x.png");
+        background-repeat: no-repeat;
+        background-color: var(--color-green);
+        border-radius: 30px;
+        width: 492px;
+        height: 578px;
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .application-card-wrapper {
+        display: none;
+    }
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 1279px),
+    screen and (min-resolution: 192dpi) and (min-width: 1279px),
+    screen and (min-resolution: 2dppx) and (min-width: 1279px) {
+    .application-card-wrapper {
+        background-image: url("../img/application/3x.png");
+        background-size: 492px;
+        background-position: top;
+    }
+}
+
+.application-card-big-text {
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+
+    color: var(--color-white);
+}
+
+.application-card-text {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.application-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+}
+
+@media screen and (min-width: 1279px) {
+    .application-form {
+        margin: 0px;
+    }
+}
+
+.application-input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1279px) {
+    .application-input-group {
+        margin-bottom: 32px;
+    }
+}
+
+.application-form-input {
+    width: 100%;
+    max-width: 335px;
+    height: 50px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(18, 20, 23, 0.10);
+    background-color: transparent;
+    outline: transparent;
+    resize: none;
+}
+
+.application-form-input:not(.invalid):hover,
+.application-form-input:not(.invalid):focus {
+    border-color: var(--color-green);
+}
+
+.application-form-input::placeholder {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.28;
+    color: var(--color-black);
+}
+@media screen and (min-width: 768px) {
+    .application-form-input::placeholder {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
+
+.teaxtarea-input {
+    width: 100%;
+    height: 94px;
+}
+
+@media screen and (min-width: 768px) {
+    .application-form-input {
+        min-width: 500px;
+        height: 56px;
+    }
+
+    .teaxtarea-input {
+        height: 104px;
+    }
+}
+
+.application-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0px 0px 40px 0px;
+    padding: 0px;
+    border: none;
+}
+
+@media screen and (min-width: 768px) {
+    .application-radio-group {
+        flex-direction: row;
+        gap: 16px;
+        margin: 0px 0px 32px 0px;
+    }
+}
+
+.application-radio-group-title {
+    margin-bottom: 14px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.33;
+    letter-spacing: -0.02em;
+    color: var(--color-black);
+    @media screen and (min-width: 768px) {
+        font-size: 20px;
+    }
+}
+
+.application-radio {
+    font-size: 14px;
+    @media screen and (min-width: 768px) {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .lapplication-radio-group-title {
+        margin-bottom: 20px;
+    }
+}
+
+.application-radio {
+    position: relative;
+}
+
+.application-radio-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.application-radio-label {
+    padding-left: 28px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.71;
+    letter-spacing: -0.02em;
+    color: var(--color-black);
+}
+
+@media screen and (min-width: 768px) {
+    .application-radio-label {
+        font-size: 18px;
+        line-height: 1.33;
+        letter-spacing: -0.03em;
+    }
+}
+
+.application-radio-label::before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(18, 20, 23, 0.2);
+    background-color: var(--color-white);
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    z-index: 1;
+    transition: border-color var(--transition-time-and-func);
+}
+
+@media screen and (min-width: 768px) {
+    .application-radio-label::before {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.application-radio-label::after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--color-green);
+    background-color: var(--color-green);
+    border-radius: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 7px;
+    left: 4px;
+    z-index: 2;
+    transition: opacity var(--transition-time-and-func);
+}
+
+@media screen and (min-width: 768px) {
+    .application-radio-label::after {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+.application-radio-input:checked + .application-radio-label::before {
+    border-color: var(--color-green);
+}
+
+.application-radio-input:checked + .application-radio-label::after {
+    opacity: 1;
+}
+
+.application-form-btn {
+    display: block;
+    height: 52px;
+    padding: 0px;
+    width: 100%;
+    max-width: 335px;
+    margin-bottom: 16px;
+    margin: 0 auto 16px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--color-green);
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.71;
+    transition: background-color var(--transition-time-and-func);
+}
+
+.application-form-btn:hover,
+.application-form-btn:focus {
+    background-color: var(--color-green-hover);
+}
+
+@media screen and (min-width: 768px) {
+    .application-form-btn {
+        padding: 16px 228px;
+        min-width: 500px;
+        height: 60px;
+        font-size: 18px;
+        line-height: 1.55;
+    }
+}
+
+.application-form-policy {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 355px;
+    font-size: 12px;
+    line-height: 1.33;
+    color: var(--color-dark-gray);
+}
+
+@media screen and (min-width: 768px) {
+    .application-form-policy {
+        font-size: 14px;
+        line-height: 1.71;
+        max-width: 500px;
+    }
+}
+
+.application-form-policy-link {
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-dark-gray);
+    color: var(--color-dark-gray);
+}
