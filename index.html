@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <title>Your Energy</title>
+    <script type="module" crossorigin src="/goit-markup-final-project/index.js"></script>
+    <link rel="stylesheet" crossorigin href="/goit-markup-final-project/assets/index-DfklEI9C.css">
+  </head>
+  <body>
+    <header class="section header" id="header">
+    <div class="container">
+        <p class="header-logo">english<span class="header-logo_accent">excellence</span>.</p>
+        <ul class="nav-items">
+    <li class="nav-item">
+        <a href="#about" class="nav-link" aria-label="Section About us">About us</a>
+    </li>
+    <li class="nav-item">
+        <a href="#lessons" class="nav-link" aria-label="section Our lessons">Our lessons</a>
+    </li>
+    <li class="nav-item">
+        <a href="#teachers" class="nav-link" aria-label="section Our teachers">Teachers</a>
+    </li>
+    <li class="nav-item">
+        <a href="#feedback" class="nav-link" aria-label="section Reviews">Reviews</a>
+    </li>
+    <li class="nav-item">
+        <a href="#application" class="nav-link" aria-label="section Contact us">Contact us</a>
+    </li>
+</ul>
+
+<ul class="soc-items">
+    <li class="soc-item">
+        <a href="https://www.facebook.com/goITclub/" class="soc-link" aria-label="Facebook" target="_blank">
+            <svg class="icon">
+                <use href="./img/icons/sprites.svg#facebook"></use>
+            </svg>
+        </a>
+    </li>
+    <li class="soc-item">
+        <a href="https://www.instagram.com/goitclub/ " class="soc-link" aria-label="Instagram" target="_blank">
+            <svg class="icon">
+                <use href="./img/icons/sprites.svg#instagram"></use>
+            </svg>
+        </a>
+    </li>
+    <li class="soc-item">
+        <a href="https://www.youtube.com/c/GoIT" class="soc-link" aria-label="Youtube" target="_blank">
+            <svg class="icon">
+                <use href="./img/icons/sprites.svg#youtube"></use>
+            </svg>
+        </a>
+    </li>
+</ul>
+
+
+        <button type="button" aria-label="Open menu" class="burger-menu" id="burger-btn" onclick="toggleMenu()">
+            <span class="burger-line burger-line-1"></span>
+            <span class="burger-line burger-line-2"></span>
+            <span class="burger-line burger-line-3"></span>
+        </button>
+    </div>
+</header>
+
+    <main>
+      <section class="section hero" id="hero">
+    <div class="container">
+        <picture class="hero-image">
+            <source
+                srcset="./img/hero/desktop-1x.webp 1x, ./img/hero/desktop-2x.webp 2x, ./img/hero/desktop-3x.webp 3x"
+                type="image/webp"
+                media="(min-width: 1280px)"
+           />
+            <source
+                srcset="./img/hero/desktop-1x.jpg 1x, ./img/hero/desktop-2x.jpg 2x, ./img/hero/desktop-3x.jpg 3x"
+                type="image/jpeg"
+                media="(min-width: 1280px)"
+           />
+            <source
+                srcset="./img/hero/tablet-1x.webp 1x, ./img/hero/tablet-2x.webp 2x, ./img/hero/tablet-3x.webp 3x"
+                type="image/webp"
+                media="(min-width: 768px)"
+           />
+            <source
+                srcset="./img/hero/tablet-1x.jpg 1x, ./img/hero/tablet-2x.jpg 2x, ./img/hero/tablet-3x.jpg 3x"
+                type="image/jpeg"
+                media="(min-width: 768px)"
+           />
+            <source
+                srcset="./img/hero/mobile-1x.webp 1x, ./img/hero/mobile-2x.webp 2x, ./img/hero/mobile-3x.webp 3x"
+                type="image/webp"
+           />
+            <source
+                srcset="./img/hero/mobile-1x.jpg 1x, ./img/hero/mobile-2x.jpg 2x, ./img/hero/mobile-3x.jpg 3x"
+                type="image/jpeg"
+           />
+            <img class="hero-image" src="./img/hero/desktop-1x.jpg" alt="Hero image"/>
+        </picture>
+
+        <h1 class="hero-title">Discover the joy of learning <span class="highlight">English</span> with us!</h1>
+
+        <a href="#application" class="btn btn-primary" aria-label="Leave an application">Leave an application</a>
+
+        <div class="hero-scroll-down">
+            <a class="scroll-button" href="#footer" aria-label="Scroll to bottom">
+                <svg class="scroll-icon" width="24" height="24">
+                    <use href="./img/icons/sprites.svg#icon-angle-small-left"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    
+    <footer class="section footer" id="footer">
+    <div class="container dark">
+        <div class="footer-content">
+            <div>
+                <a href="./index.html" class="header-logo white"
+                    >english<span class="header-logo_accent">excellence</span>.
+                </a>
+                <ul class="contact-footer">
+                    <li class="contact-footer-item">
+                        <p class="small-footer-text">Phone number:</p>
+                        <a class="nav-link white" href="tel:+380684439426"
+                            >+380 (68) 443-94-26</a
+                        >
+                    </li>
+                    <li class="contact-footer">
+                        <p class="small-footer-text">Address:</p>
+                        <a
+                            class="nav-link white"
+                            href="https://www.google.com/maps/place/%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82+%D0%9C%D0%B8%D0%BA%D0%BE%D0%BB%D0%B8+%D0%91%D0%B0%D0%B6%D0%B0%D0%BD%D0%B0,+32%D0%90,+%D0%9A%D0%B8%D1%97%D0%B2,+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0,+02000/@50.3973092,30.6455519,16z/data=!4m6!3m5!1s0x40d4c450580cb0ef:0xa9ecbb77005418c9!8m2!3d50.3972693!4d30.6483532!16s%2Fg%2F11cnchy4dm!5m1!1e4?entry=ttu&g_ep=EgoyMDI1MDMxOC4wIKXMDSoASAFQAw%3D%3D"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >32a M. Bazhana ave</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <ul class="nav-items">
+                <li class="nav-item white">
+                    <a
+                        href="#about"
+                        class="nav-link white"
+                        aria-label="Section About us"
+                        >About us</a
+                    >
+                </li>
+                <li class="nav-item white">
+                    <a
+                        href="#lessons"
+                        class="nav-link white"
+                        aria-label="section Our lessons"
+                        >Our lessons</a
+                    >
+                </li>
+                <li class="nav-item white">
+                    <a
+                        href="#teachers"
+                        class="nav-link white"
+                        aria-label="section Our teachers"
+                        >Teachers</a
+                    >
+                </li>
+                <li class="nav-item white">
+                    <a
+                        href="#feedback"
+                        class="nav-link white"
+                        aria-label="section Reviews"
+                        >Reviews</a
+                    >
+                </li>
+                <li class="nav-item white">
+                    <a
+                        href="#application"
+                        class="nav-link white"
+                        aria-label="section Contact us"
+                        >Contact us</a
+                    >
+                </li>
+            </ul>
+            <div class="soc-container">
+                <ul class="soc-items">
+                    <li class="soc-item">
+                        <a
+                            href="https://www.facebook.com/goITclub/"
+                            class="soc-link"
+                            aria-label="Facebook"
+                            target="_blank">
+                            <svg class="icon">
+                                <use href="./img/icons/sprites.svg#facebook"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="soc-item">
+                        <a
+                            href="https://www.instagram.com/goitclub/ "
+                            class="soc-link"
+                            aria-label="Instagram"
+                            target="_blank">
+                            <svg class="icon">
+                                <use href="./img/icons/sprites.svg#instagram"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="soc-item">
+                        <a
+                            href="https://www.youtube.com/c/GoIT"
+                            class="soc-link"
+                            aria-label="Youtube"
+                            target="_blank">
+                            <svg class="icon">
+                                <use href="./img/icons/sprites.svg#youtube"></use>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-end">
+            <p class="small-footer-text">
+                ©2023 English Excellence. All rights reserved.
+            </p>
+            <div class="footer-rules">
+                <a class="small-footer-text" href="#">Privacy Policy</a>
+                <a class="small-footer-text" href="#">Team of Service</a>
+            </div>
+        </div>
+        <div>
+            <a class="scroll-button up" href="#header" aria-label="Scroll up">
+                <svg class="scroll-icon up" width="24" height="24">
+                    <use
+                        href="./img/icons/sprites.svg#icon-angle-small-left"
+                    ></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+</footer>
+
+    <div class="menu-backdrop" id="menu-backdrop">
+    <div class="menu" id="menu">
+        <div id="nav-container">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="#about" class="nav-link" aria-label="Section About us">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#lessons" class="nav-link" aria-label="section Our lessons">Our lessons</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#teachers" class="nav-link" aria-label="section Our teachers">Teachers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#feedback" class="nav-link" aria-label="section Reviews">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#application" class="nav-link" aria-label="section Contact us">Contact us</a>
+                </li>
+            </ul>
+
+            <ul class="soc-items">
+                <li class="soc-item">
+                    <a href="https://www.facebook.com/goITclub/" class="soc-link" aria-label="Facebook" target="_blank">
+                        <svg class="icon">
+                            <use href="./img/icons/sprites.svg#facebook"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="soc-item">
+                    <a href="https://www.instagram.com/goitclub/" class="soc-link" aria-label="Instagram" target="_blank">
+                        <svg class="icon">
+                            <use href="./img/icons/sprites.svg#instagram"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="soc-item">
+                    <a href="https://www.youtube.com/c/GoIT" class="soc-link" aria-label="Youtube" target="_blank">
+                        <svg class="icon">
+                            <use href="./img/icons/sprites.svg#youtube"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+  </body>
+</html>
