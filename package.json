@@ -1,18 +1,18 @@
 {
-  "name": "vanilla-app-template",
+  "name": "goit-markup-final-project",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/vanilla-app-template/",
+    "build": "vite build --base=/goit-markup-final-project/",
     "preview": "vite preview"
   },
   "devDependencies": {
     "glob": "^11.0.0",
     "postcss": "^8.4.41",
     "postcss-sort-media-queries": "^5.2.0",
-    "vite": "^5.4.6"
+    "vite": "^7.0.0"
   },
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
