@@ -1,4 +1,6 @@
 :root {
+    --primary-color: #242424;
+
     --color-black: #121417;
     --color-white: #ffffff;
     --color-white-10: #FFFFFF1A;
@@ -27,5 +29,5 @@
     --mobile-min-width: 320px;
     --mobile-max-width: 375px;
     --tablet-width: 768px;
-    --desktop-width: 1280px;    
+    --desktop-width: 1280px;
 }
