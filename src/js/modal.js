@@ -1,12 +1,17 @@
 import { getFavorites } from './helpers';
+import RatingModal from './rating-modal';
 
 export default class Modal {
   constructor(rootSelector = '#modal-root') {
     this.#rootSelector = rootSelector;
+    this.#ratingModal = new RatingModal(this.#rootSelector);
+
+    this.#rootElement.addEventListener('rating-modal:close', this.#closeRatingModalHandler);
   }
   #rootSelector;
   #isShown = false;
   #currentData = {};
+  #ratingModal = null;
 
   get #rootElement() {
     return document.querySelector(this.#rootSelector);
@@ -52,7 +57,7 @@ export default class Modal {
           <img src="${gifUrl}" alt="exercise" class="modal-image" />
           <div>
             <p class="modal-name">${name}</p>
-            <div class="modal-rating-container">
+            <div class="modal-rating-info">
               <p class="modal-rating">${rating}</p>
               ${this.#generateRatingStars(rating)}
             </div>
@@ -86,6 +91,9 @@ export default class Modal {
         <div class="modal-controls">
           <button id="add-to-favorite-button" class="btn primary">
             Add to favorites
+          </button>
+          <button id="give-a-rating-button" class="btn">
+            Give rating
           </button>
         </div>
       </div>
@@ -126,16 +134,30 @@ export default class Modal {
       : 'Add to favorites <svg><use href="./img/icons.svg#icon-heart"></use></svg>';
   };
 
-#generateRatingStars(rating) {
-  const full = Math.floor(rating);
-  const empty = 5 - full;
-  return `
+  #generateRatingStars(rating) {
+    const full = Math.floor(rating);
+    const empty = 5 - full;
+    return `
     <ul class="modal-rating-stars">
-      ${'<li><svg class="active"><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(full)}
-      ${'<li><svg><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(empty)}
+      ${'<li><svg class="active"><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(
+        full
+      )}
+      ${'<li><svg><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(
+        empty
+      )}
     </ul>
   `;
-}
+  }
+
+  #showRatingModalHandler = () => {
+    this.hideModal();
+    this.#ratingModal.showModal(this.#currentData._id);
+    
+  };
+
+  #closeRatingModalHandler = () => {
+    this.showModal(this.#currentData);
+  };
 
   showModal = props => {
     if (this.#isShown) return;
@@ -145,6 +167,10 @@ export default class Modal {
     this.#addToFavoriteButton?.addEventListener('click', this.#toggleFavorite);
     this.#backDrop?.addEventListener('click', this.#hideModalHandler);
     this.#closeButton?.addEventListener('click', this.hideModal);
+    this.#giveRatingButton?.addEventListener(
+      'click',
+      this.#showRatingModalHandler
+    );
 
     this.#updateFavoriteButtonText();
     this.#isShown = true;
@@ -157,3 +183,4 @@ export default class Modal {
     this.#isShown = false;
   };
 }
+
