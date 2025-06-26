@@ -137,6 +137,23 @@
   display: inline-block;
 }
 
+.exercises-page .search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exercises-page .search-icon img {
+  width: 18px;
+  height: 18px;
+}
+
 .exercises-page .search-input {
   width: 273px;
   height: 48px;
@@ -165,7 +182,7 @@
 
 .exercises-page .search-clear-btn {
   position: absolute;
-  right: 16px;
+  right: 36px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -175,7 +192,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-black-light);
+  color: var(--color-black);
   transition: color 0.2s ease;
   border-radius: 50px;
 }
@@ -368,7 +385,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex: 1;
   min-width: 0;
 }
 
