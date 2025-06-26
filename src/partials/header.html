@@ -20,13 +20,19 @@
     <load src="/partials/socials.html" />
 
     <button
-      class="burger-menu-button btn"
+      class="mobile-menu-btn"
+      id="mobile-menu-btn"
       type="button"
       aria-label="Open mobile menu"
+      aria-expanded="false"
     >
-      <svg class="burger-menu-icon" width="32" height="32">
-        <use href="./img/icons.svg#icon-burger-menu"></use>
-      </svg>
+      <span class="burger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
     </button>
   </div>
 </header>
+
+<load src="partials/mobile-menu.html" />
