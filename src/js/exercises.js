@@ -262,18 +262,35 @@ class ExercisesManager {
   constructor() {
     this.state = new ExercisesState();
     this.elements = this.initializeElements();
+
+    // Don't continue if essential elements are missing
+    if (!this.elements) {
+      console.error('Failed to initialize ExercisesManager: required DOM elements not found');
+      return;
+    }
+
     this.setupEventListeners();
   }
 
   initializeElements() {
-    return {
+    const elements = {
       musclesGrid: DOMUtils.getElementById(SELECTORS.musclesGrid),
       tabs: DOMUtils.querySelectorAll(SELECTORS.tabs),
       searchSection: DOMUtils.getElementById(SELECTORS.searchSection),
       breadcrumb: DOMUtils.getElementById(SELECTORS.breadcrumb),
-      searchInput: DOMUtils.getElementById(SELECTORS.searchSection).querySelector(SELECTORS.searchInput),
       searchClearBtn: DOMUtils.getElementById(SELECTORS.searchClearBtn),
     };
+
+    // Check if essential elements exist
+    if (!elements.musclesGrid || !elements.searchSection) {
+      console.error('Essential DOM elements not found for exercises functionality');
+      return null;
+    }
+
+    // Add searchInput safely
+    elements.searchInput = elements.searchSection.querySelector(SELECTORS.searchInput);
+
+    return elements;
   }
 
   setupEventListeners() {
@@ -587,6 +604,10 @@ class ExercisesManager {
   // INITIALIZATION
   // ===============================================
   init() {
+    // Don't initialize if elements weren't properly set up
+    if (!this.elements) {
+      return;
+    }
     this.renderFilters(CONFIG.DEFAULT_FILTER, 1);
   }
 }
@@ -594,5 +615,15 @@ class ExercisesManager {
 // ===============================================
 // APPLICATION STARTUP
 // ===============================================
-const exercisesManager = new ExercisesManager();
-exercisesManager.init();
+function initExercisesApp() {
+  const exercisesManager = new ExercisesManager();
+  exercisesManager.init();
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initExercisesApp);
+} else {
+  // DOM is already loaded
+  initExercisesApp();
+}
