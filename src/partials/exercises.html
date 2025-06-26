@@ -1,0 +1,36 @@
+<div class="exercises-page">
+  <div class="container">
+    <div class="exercises-header">
+      <div class="title-section">
+        <h2 class="exercises-title">Exercises</h2>
+        <span id="breadcrumb" class="breadcrumb" style="display: none;"></span>
+      </div>
+      <div class="header-controls">
+        <div class="search-section" id="search-section" style="display: none;">
+          <div class="search-input-wrapper">
+            <input type="text" class="search-input" placeholder="Search..." />
+            <button class="search-clear-btn" id="search-clear-btn" style="display: none;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="exercises-tabs">
+          <button class="tab active" data-tab="muscles">Muscles</button>
+          <button class="tab" data-tab="body-parts">Body parts</button>
+          <button class="tab" data-tab="equipment">Equipment</button>
+        </div>
+      </div>
+    </div>
+    <div class="exercises-content">
+      <div class="exercises-sidebar">
+      </div>
+      <div class="exercises-main">
+        <div id="muscles-grid" class="muscles-grid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="./js/exercises.js"></script>
+<link rel="stylesheet" href="./css/exercises.css" />
