@@ -342,7 +342,6 @@ class ExercisesManager {
 
   async renderExercisesList(filterName, filterType, searchTerm = '', page = 1) {
     this.showSearchAndBreadcrumb(filterName);
-    this.updateURL(filterName);
 
     if (!searchTerm) {
       this.clearSearchInput();
@@ -557,7 +556,6 @@ class ExercisesManager {
       backBtn.addEventListener('click', () => {
         this.state.reset();
         this.clearSearchInput();
-        this.updateURL('');
         this.renderFilters(this.state.currentFilter, 1);
       });
     }
@@ -590,14 +588,6 @@ class ExercisesManager {
         this.renderExercisesList(this.state.selectedBodyPart, this.state.currentFilter, '', newPage);
       }
     }
-  }
-
-  // ===============================================
-  // UTILITY METHODS
-  // ===============================================
-  updateURL(filterName) {
-    const url = filterName ? `#/exercises/${filterName.toLowerCase()}` : '#/exercises';
-    window.history.pushState({}, '', url);
   }
 
   // ===============================================
