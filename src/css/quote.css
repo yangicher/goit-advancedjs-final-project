@@ -1,0 +1,224 @@
+.quote {
+  background-color: #f4f4f4;
+}
+.quote-cards-wrapper {
+  max-width: 335px;
+  margin: 0 auto;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.quote-card {
+  max-width: 335px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #242424;
+  padding: 20px;
+}
+.quote-day-wrap {
+  width: 100%;
+}
+.icon-wrap {
+  background-color: #f4f4f433;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: none;
+  margin-right: 18px;
+}
+.qoute-wrap {
+  display: flex;
+  width: 100%;
+}
+.quote-icon-run {
+  fill: #f4f4f4;
+}
+
+.quote-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.quote-day-title {
+  color: #f4f4f4;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: 'DM Sans';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
+}
+.quote-day {
+  flex-shrink: 0;
+  color: rgba(244, 244, 244, 0.6);
+  font-family: 'DM Sans';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+  margin-bottom: 16px;
+}
+.qoute-author {
+  color: #f4f4f4;
+  font-family: 'DM Sans';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+
+.quote-img-wrap {
+  max-width: 335px;
+}
+.quote-img {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #fff;
+}
+.quote-news {
+  padding: 20px;
+  max-width: 335px;
+
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #fff;
+}
+.news-title-wrap {
+  display: flex;
+}
+
+.news-title-time {
+  color: #242424;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: 'DM Sans';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
+  margin-bottom: 2px;
+}
+.news-title-norm {
+  color: rgba(36, 36, 36, 0.6);
+  font-family: 'DM Sans';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+  margin-bottom: 16px;
+}
+.news-recommends {
+  max-height: 90px;
+  color: #242424;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.icon-news {
+  flex: none;
+  margin-right: 18px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .quote-cards-wrapper {
+    max-width: 704px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 16px;
+    align-items: stretch;
+    row-gap: 32px;
+  }
+  .quote-card,
+  .quote-img-wrap,
+  .quote-news {
+    flex: 0 0 auto;
+  }
+
+  .quote-card {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .quote-img-wrap {
+    width: 288px;
+  }
+  .quote-news {
+    max-width: 400px;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .quote-day-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+  .quote-day {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+  .qoute-author {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  .news-title-time {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+  .news-title-norm {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+  .news-recommends {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    max-width: 270px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .news-recommends {
+    max-height: none;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+    display: block;
+  }
+  .quote-cards-wrapper {
+    max-width: 444px;
+  }
+  .quote-card,
+  .quote-img-wrap,
+  .quote-news {
+    max-width: 444px;
+  }
+  .news-recommends {
+    max-width: 314px;
+  }
+  .quote-cards-wrapper {
+    margin: 0;
+  }
+  .quote {
+    padding-top: 0;
+  }
+}
