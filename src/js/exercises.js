@@ -7,7 +7,7 @@ const CONFIG = {
   FILTERS_PER_PAGE: 12,
   EXERCISES_PER_PAGE: 10,
   SEARCH_DEBOUNCE_DELAY: 1000,
-  ANIMATION_DURATION: 1450,
+  ANIMATION_DURATION: 0,
   DEFAULT_FILTER: 'Muscles',
 };
 
@@ -163,17 +163,17 @@ class Templates {
           <div class="workout-rating-left">
             <div class="workout-badge">WORKOUT</div>
             <div class="rating">
-              ${exercise.rating || 4.5} <span class="star">★</span>
+              ${exercise.rating} <span class="star"><img src="/img/icons/star.svg" alt="star" /></span>
             </div>
           </div>
-          <button class="start-btn">Start <span class="arrow">→</span></button>
+          <button class="start-btn">Start <span class="arrow"><img src="/img/icons/start-arrow.svg" alt="Start" /></span></button>
         </div>
         <div class="exercise-middle-row">
-          <div class="exercise-icon">⚡</div>
+          <div class="exercise-icon"><img src="/img/icons/exercise-icon.svg" /></div>
           <h3 class="exercise-title">${exercise.name}</h3>
         </div>
         <div class="exercise-bottom-row">
-          <span><span class="meta-label">Burned calories:</span> <span class="meta-value">${exercise.burnedCalories || 150} / 3 min</span></span>
+          <span><span class="meta-label">Burned calories:</span> <span class="meta-value">${exercise.burnedCalories}</span></span>
           <span><span class="meta-label">Body part:</span> <span class="meta-value">${exercise.bodyPart}</span></span>
           <span><span class="meta-label">Target:</span> <span class="meta-value">${exercise.target}</span></span>
         </div>
