@@ -39,7 +39,6 @@
   transform-origin: center;
 }
 
-/* Burger to X animation */
 .mobile-menu-btn.is-active .burger-icon span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -53,12 +52,10 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* When menu is open, change burger color to white */
 .mobile-menu-btn.is-active .burger-icon span {
   background-color: var(--color-white);
 }
 
-/* When menu is open, make button fixed */
 .mobile-menu-backdrop.is-open ~ .header .mobile-menu-btn {
   position: fixed;
   top: 20px;
@@ -66,7 +63,6 @@
   z-index: 1001;
 }
 
-/* Mobile menu overlay */
 .mobile-menu-backdrop {
   position: fixed;
   top: 0;
@@ -85,7 +81,6 @@
   visibility: visible;
 }
 
-/* Mobile menu */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -134,7 +129,6 @@
   transform: rotate(-45deg);
 }
 
-/* Mobile navigation */
 .mobile-nav {
   flex-grow: 1;
   display: flex;
@@ -174,7 +168,6 @@
   background: var(--color-white);
 }
 
-/* Mobile social icons */
 .mobile-soc-items {
   display: flex;
   justify-content: center;
