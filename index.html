@@ -8,6 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
       integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
@@ -17,63 +21,116 @@
 
     <title>Your Energy</title>
     <script type="module" crossorigin src="/goit-markup-final-project/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/goit-markup-final-project/assets/index-U0hpg8fI.css">
+    <link rel="modulepreload" crossorigin href="/goit-markup-final-project/assets/vendor-DDD7fsZd.js">
+    <link rel="stylesheet" crossorigin href="/goit-markup-final-project/assets/index-8GkgU3tR.css">
   </head>
   <body>
     <header class="section header" id="header">
-    <div class="container">
-        <p class="header-logo">english<span class="header-logo_accent">excellence</span>.</p>
-        <ul class="nav-items">
-    <li class="nav-item">
-        <a href="#about" class="nav-link" aria-label="Section About us">About us</a>
-    </li>
-    <li class="nav-item">
-        <a href="#lessons" class="nav-link" aria-label="section Our lessons">Our lessons</a>
-    </li>
-    <li class="nav-item">
-        <a href="#teachers" class="nav-link" aria-label="section Our teachers">Teachers</a>
-    </li>
-    <li class="nav-item">
-        <a href="#feedback" class="nav-link" aria-label="section Reviews">Reviews</a>
-    </li>
-    <li class="nav-item">
-        <a href="#application" class="nav-link" aria-label="section Contact us">Contact us</a>
-    </li>
+  <div class="container">
+    <a href="./#" class="logo-link" aria-label="Logo" target="_blank">
+      <svg class="logo" width="132" height="24">
+        <use href="/goit-markup-final-project/assets/icons-DmPRjW5f.svg#icon-logo"></use>
+      </svg>
+    </a>
+
+    <ul class="nav-items">
+      <li class="nav-item selected">
+        <a href="./#" class="nav-link" aria-label="Section Home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="#favorites" class="nav-link" aria-label="Section Favorites"
+          >Favorites</a
+        >
+      </li>
+    </ul>
+
+    <ul class="soc-items">
+  <li class="soc-item">
+    <a
+      href="https://www.facebook.com/goITclub/"
+      class="soc-link"
+      aria-label="Facebook"
+      target="_blank"
+    >
+      <svg class="icon">
+        <use href="/goit-markup-final-project/assets/icons-DmPRjW5f.svg#icon-facebook"></use>
+      </svg>
+    </a>
+  </li>
+  <li class="soc-item">
+    <a
+      href="https://www.instagram.com/goitclub/ "
+      class="soc-link"
+      aria-label="Instagram"
+      target="_blank"
+    >
+      <svg class="icon">
+        <use href="/goit-markup-final-project/assets/icons-DmPRjW5f.svg#icon-instagram"></use>
+      </svg>
+    </a>
+  </li>
+  <li class="soc-item">
+    <a
+      href="https://www.youtube.com/c/GoIT"
+      class="soc-link"
+      aria-label="Youtube"
+      target="_blank"
+    >
+      <svg class="icon">
+        <use href="/goit-markup-final-project/assets/icons-DmPRjW5f.svg#icon-youtube"></use>
+      </svg>
+    </a>
+  </li>
 </ul>
 
-<ul class="soc-items">
-    <li class="soc-item">
-        <a href="https://www.facebook.com/goITclub/" class="soc-link" aria-label="Facebook" target="_blank">
-            <svg class="icon">
-                <use href="/goit-markup-final-project/assets/icons-DRImzY5-.svg#icon-facebook"></use>
-            </svg>
-        </a>
-    </li>
-    <li class="soc-item">
-        <a href="https://www.instagram.com/goitclub/ " class="soc-link" aria-label="Instagram" target="_blank">
-            <svg class="icon">
-                <use href="/goit-markup-final-project/assets/icons-DRImzY5-.svg#icon-instagram"></use>
-            </svg>
-        </a>
-    </li>
-    <li class="soc-item">
-        <a href="https://www.youtube.com/c/GoIT" class="soc-link" aria-label="Youtube" target="_blank">
-            <svg class="icon">
-                <use href="/goit-markup-final-project/assets/icons-DRImzY5-.svg#icon-youtube"></use>
-            </svg>
-        </a>
-    </li>
-</ul>
 
-
-        <button type="button" aria-label="Open menu" class="burger-menu" id="burger-btn" onclick="toggleMenu()">
-            <span class="burger-line burger-line-1"></span>
-            <span class="burger-line burger-line-2"></span>
-            <span class="burger-line burger-line-3"></span>
-        </button>
-    </div>
+    <button
+      class="burger-menu-button btn"
+      type="button"
+      aria-label="Open mobile menu"
+    >
+      <svg class="burger-menu-icon" width="32" height="32">
+        <use href="/goit-markup-final-project/assets/icons-DmPRjW5f.svg#icon-burger-menu"></use>
+      </svg>
+    </button>
+  </div>
 </header>
 
+
+    <div class="exercises-page">
+  <div class="container">
+    <div class="exercises-header">
+      <div class="title-section">
+        <h2 class="exercises-title">Exercises</h2>
+        <span id="breadcrumb" class="breadcrumb" style="display: none;"></span>
+      </div>
+      <div class="header-controls">
+        <div class="search-section" id="search-section" style="display: none;">
+          <div class="search-input-wrapper">
+            <input type="text" class="search-input" placeholder="Search..." />
+            <button class="search-clear-btn" id="search-clear-btn" style="display: none;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="exercises-tabs">
+          <button class="tab active" data-tab="muscles">Muscles</button>
+          <button class="tab" data-tab="body-parts">Body parts</button>
+          <button class="tab" data-tab="equipment">Equipment</button>
+        </div>
+      </div>
+    </div>
+    <div class="exercises-content">
+      <div class="exercises-sidebar">
+      </div>
+      <div class="exercises-main">
+        <div id="muscles-grid" class="muscles-grid"></div>
+      </div>
+    </div>
+  </div>
+</div>
     <footer class="section footer" id="footer">
     <div class="container dark">
         <div class="footer-content">
