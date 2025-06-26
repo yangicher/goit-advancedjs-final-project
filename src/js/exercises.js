@@ -1,4 +1,5 @@
 import { get } from './api';
+import Modal from './modal';
 
 // ===============================================
 // CONSTANTS & CONFIGURATION
@@ -453,6 +454,28 @@ class ExercisesManager {
     this.attachBackButtonListener();
   }
 
+  attachExerciseCardListeners() {
+    const cards = document.querySelectorAll('.exercise-item');
+    cards.forEach(card => {
+      card.addEventListener('click', async () => {
+        const title = card.querySelector('.exercise-title')?.textContent?.trim();
+        if (!title) return;
+  
+        try {
+          const { results } = await get('exercises', { name: title });
+          if (results?.length > 0) {
+            modal.showModal(results[0]); 
+          } else {
+            console.warn('Exercise not found for modal');
+          }
+        } catch (e) {
+          console.error('Error fetching exercise data for modal:', e);
+        }
+      });
+    });
+  }
+  
+
   // ===============================================
   // EVENT HANDLERS
   // ===============================================
@@ -535,6 +558,7 @@ class ExercisesManager {
 
   attachExercisesEventListeners(searchTerm) {
     this.attachBackButtonListener();
+    this.attachExerciseCardListeners();
     if (!searchTerm) {
       this.attachPaginationListeners('exercises');
     }
@@ -617,3 +641,6 @@ if (document.readyState === 'loading') {
   // DOM is already loaded
   initExercisesApp();
 }
+
+
+const modal = new Modal();

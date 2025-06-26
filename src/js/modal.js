@@ -1,4 +1,5 @@
 import { getFavorites } from './helpers';
+import RatingModal from './rating-modal';
 
 export default class Modal {
   constructor(rootSelector = '#modal-root') {
@@ -87,6 +88,9 @@ export default class Modal {
           <button id="add-to-favorite-button" class="btn primary">
             Add to favorites
           </button>
+          <button id="give-button" class="btn secondary">
+            Give a rating
+          </button>
         </div>
       </div>
     </div>`;
@@ -126,16 +130,16 @@ export default class Modal {
       : 'Add to favorites <svg><use href="./img/icons.svg#icon-heart"></use></svg>';
   };
 
-#generateRatingStars(rating) {
-  const full = Math.floor(rating);
-  const empty = 5 - full;
-  return `
+  #generateRatingStars(rating) {
+    const full = Math.floor(rating);
+    const empty = 5 - full;
+    return `
     <ul class="modal-rating-stars">
       ${'<li><svg class="active"><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(full)}
       ${'<li><svg><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(empty)}
     </ul>
   `;
-}
+  }
 
   showModal = props => {
     if (this.#isShown) return;
@@ -143,11 +147,19 @@ export default class Modal {
     this.#rootElement.innerHTML = this.#renderModal(props);
 
     this.#addToFavoriteButton?.addEventListener('click', this.#toggleFavorite);
+    const giveRatingBtn = document.querySelector('#give-button');
     this.#backDrop?.addEventListener('click', this.#hideModalHandler);
     this.#closeButton?.addEventListener('click', this.hideModal);
 
     this.#updateFavoriteButtonText();
     this.#isShown = true;
+
+    giveRatingBtn?.addEventListener('click', () => {
+      this.hideModal();
+      ratingModal.show(this.#currentData, () => {
+        this.showModal(this.#currentData);
+      });
+    });
   };
 
   hideModal = () => {
@@ -157,3 +169,5 @@ export default class Modal {
     this.#isShown = false;
   };
 }
+
+const ratingModal = new RatingModal();

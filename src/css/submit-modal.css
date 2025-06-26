@@ -1,0 +1,111 @@
+.secondary-backdrop {
+    width: 430px;
+    height: 412px;
+    flex-shrink: 0;
+    padding: 40px;
+}
+
+.rating-form label {
+    color: rgba(244, 244, 244, 0.40);
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "DM Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.stars-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.stars-list {
+    display: flex;
+    gap: 2px;
+}
+
+.star-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.star-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+    fill: currentColor;
+}
+
+.star-button:hover .star-icon {
+    transform: scale(1.1);
+}
+
+.star-score {
+    color: #F4F4F4;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "DM Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.rating-form input[type="email"] {
+    width: 100%;
+    padding: 12px 27px 12px 14px;
+    border: 1px solid #F4F4F4;
+    border-radius: 30px;
+    background-color: transparent;
+    color: #f4f4f4;
+    margin-top: 32px;
+    color: rgba(244, 244, 244, 0.60);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; 
+    outline: none;
+}
+
+.rating-form textarea {
+    width: 100%;
+    height: 106px;
+    padding: 12px 22px 70px 14px;
+    border-radius: 15px;
+    border: 1px solid #F4F4F4;
+    background-color: transparent;
+    color: #f4f4f4;
+    margin-top: 16px;
+    color: rgba(244, 244, 244, 0.60);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; 
+    resize: none;
+    outline: none;
+}
+
+.rating-form button[type="submit"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    border-radius: 30px;
+    background: #F4F4F4;
+    margin-top: 32px;
+    color: #242424;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; 
+    border: none;
+    cursor: pointer;
+}
