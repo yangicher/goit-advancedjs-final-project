@@ -1,15 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
   <defs>
-    <symbol id="icon-burger" viewBox="0 0 32 32">
-      <path stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-        d="M28 13.333H4M28 8H4M28 18.667H4M28 24H4" />
-    </symbol>
-    <symbol id="icon-close" viewBox="0 0 32 32">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke="#F4F4F4" stroke-width="3" d="M24 8 8 24M8 8l16 16" />
-    </symbol>
-    <symbol id="icon-burger" viewBox="0 0 46 32">
-      <path stroke-linecap="round" stroke-width="3.429" d="M8.671 5.074H44M8.671 24.468H44M19.602 14.771H44" />
-    </symbol>
     <symbol id="icon-close" viewBox="0 0 32 32">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M24 8 8 24M8 8l16 16" />
     </symbol>
@@ -122,12 +112,6 @@
         <path d="M137.879 18.978v5.855h-3.432v-5.073l-1.514-1.691h-5.502v6.764h-3.432v-17.667h11.080l2.7 2.726v5.35l-1.716 1.741 1.817 1.994zM127.43 15.243h6.083l0.883-0.883v-3.432l-0.883-0.883h-6.083v5.199z"></path>
         <path d="M140.146 21.931v-11.862l2.902-2.902h8.783l2.852 2.852v2.7h-3.432v-1.439l-1.186-1.186h-5.199l-1.287 1.287v9.237l1.287 1.287h5.25l1.237-1.237v-2.751h-3.786v-2.928h7.117v6.94l-2.902 2.902h-8.732l-2.902-2.902z"></path>
         <path d="M160.973 17.615l-6.284-10.449h3.76l4.215 7.243h0.050l4.215-7.243h3.76l-6.284 10.449v7.218h-3.432v-7.218z"></path>
-      </symbol>
-      <symbol id="icon-burger-menu" viewBox="0 0 32 32">
-        <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M28 13.333h-24"></path>
-        <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M28 8h-24"></path>
-        <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M28 18.667h-24"></path>
-        <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M28 24h-24"></path>
       </symbol>
   </defs>
 </svg>
