@@ -4,10 +4,17 @@ import RatingModal from './rating-modal';
 export default class Modal {
   constructor(rootSelector = '#modal-root') {
     this.#rootSelector = rootSelector;
+    this.#ratingModal = new RatingModal(this.#rootSelector);
+
+    this.#rootElement.addEventListener(
+      'rating-modal:close',
+      this.#closeRatingModalHandler
+    );
   }
   #rootSelector;
   #isShown = false;
   #currentData = {};
+  #ratingModal = null;
 
   get #rootElement() {
     return document.querySelector(this.#rootSelector);
@@ -53,7 +60,7 @@ export default class Modal {
           <img src="${gifUrl}" alt="exercise" class="modal-image" />
           <div>
             <p class="modal-name">${name}</p>
-            <div class="modal-rating-container">
+            <div class="modal-rating-info">
               <p class="modal-rating">${rating}</p>
               ${this.#generateRatingStars(rating)}
             </div>
@@ -135,11 +142,30 @@ export default class Modal {
     const empty = 5 - full;
     return `
     <ul class="modal-rating-stars">
-      ${'<li><svg class="active"><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(full)}
-      ${'<li><svg><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(empty)}
+      ${'<li><svg class="active"><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(
+        full
+      )}
+      ${'<li><svg><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(
+        empty
+      )}
     </ul>
   `;
   }
+
+  #showRatingModalHandler = () => {
+    this.hideModal();
+    this.#ratingModal.showModal(this.#currentData._id);
+  };
+
+  #closeRatingModalHandler = () => {
+    this.showModal(this.#currentData);
+  };
+
+  #onEscapeKeydown = e => {
+    if (e.key === 'Escape') {
+      this.hideModal();
+    }
+  };
 
   showModal = props => {
     if (this.#isShown) return;
@@ -150,6 +176,12 @@ export default class Modal {
     const giveRatingBtn = document.querySelector('#give-button');
     this.#backDrop?.addEventListener('click', this.#hideModalHandler);
     this.#closeButton?.addEventListener('click', this.hideModal);
+    this.#giveRatingButton?.addEventListener(
+      'click',
+      this.#showRatingModalHandler
+    );
+
+    window.addEventListener('keydown', this.#onEscapeKeydown);
 
     this.#updateFavoriteButtonText();
     this.#isShown = true;
@@ -165,6 +197,7 @@ export default class Modal {
   hideModal = () => {
     if (!this.#isShown) return;
 
+    window.removeEventListener('keydown', this.#onEscapeKeydown);
     this.#rootElement.innerHTML = '';
     this.#isShown = false;
   };

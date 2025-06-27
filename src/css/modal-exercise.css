@@ -6,7 +6,7 @@ hr {
   height: 100%;
   width: 100%;
   background: rgba(4, 4, 4, 0.4);
-  position: absolute;
+  position: fixed;
   top: 0;
 }
 .modal-container {
@@ -50,7 +50,7 @@ hr {
   color: #f4f4f4;
   margin-bottom: 10px;
 }
-.modal-rating-container {
+.modal-rating-info {
   display: flex;
   gap: 2px;
   margin-bottom: 20px;
@@ -132,7 +132,7 @@ hr {
 }
 
 .btn > svg {
-  fill:transparent;
+  fill: transparent;
   stroke: black;
   height: 20px;
   width: 20px;
@@ -164,10 +164,10 @@ hr {
   .modal-controls {
     flex-direction: row;
     justify-content: flex-end;
-    gap:8px;
+    gap: 8px;
   }
   .btn {
-      padding: 12px 24px;
+    padding: 12px 24px;
   }
   .menu-close-button {
     height: 22px;

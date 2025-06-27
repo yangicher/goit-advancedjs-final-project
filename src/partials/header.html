@@ -1,17 +1,17 @@
 <header class="section header" id="header">
   <div class="container">
-    <a href="./#" class="logo-link" aria-label="Logo" target="_blank">
+    <a href="./#" class="logo-link" aria-label="Logo">
       <svg class="logo" width="132" height="24">
         <use href="./img/icons.svg#icon-logo"></use>
       </svg>
     </a>
 
     <ul class="nav-items">
-      <li class="nav-item selected">
+      <li class="nav-item">
         <a href="./#" class="nav-link" aria-label="Section Home">Home</a>
       </li>
       <li class="nav-item">
-        <a href="#favorites" class="nav-link" aria-label="Section Favorites"
+        <a href="/favorites" class="nav-link" aria-label="Section Favorites"
           >Favorites</a
         >
       </li>
@@ -20,13 +20,19 @@
     <load src="/partials/socials.html" />
 
     <button
-      class="burger-menu-button btn"
+      class="mobile-menu-btn"
+      id="mobile-menu-btn"
       type="button"
       aria-label="Open mobile menu"
+      aria-expanded="false"
     >
-      <svg class="burger-menu-icon" width="32" height="32">
-        <use href="./img/icons.svg#icon-burger-menu"></use>
-      </svg>
+      <span class="burger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
     </button>
   </div>
 </header>
+
+<load src="partials/mobile-menu.html" />

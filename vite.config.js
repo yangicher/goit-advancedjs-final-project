@@ -2,9 +2,13 @@ import { defineConfig } from 'vite';
 import { glob } from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig(({ command }) => {
+  const base = command === 'build' ? '/goit-advancedjs-final-project/' : '/';
+
   return {
+    base,
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
@@ -25,6 +29,17 @@ export default defineConfig(({ command }) => {
       },
       outDir: '../dist',
     },
-    plugins: [injectHTML(), FullReload(['./src/**/**.html'])],
+    plugins: [
+      injectHTML(),
+      FullReload(['./src/**/**.html']),
+      viteStaticCopy({
+        targets: [
+          {
+            src: 'img/**/*',
+            dest: 'img'
+          }
+        ]
+      })
+    ],
   };
 });

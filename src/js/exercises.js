@@ -8,7 +8,7 @@ const CONFIG = {
   FILTERS_PER_PAGE: 12,
   EXERCISES_PER_PAGE: 10,
   SEARCH_DEBOUNCE_DELAY: 1000,
-  ANIMATION_DURATION: 1450,
+  ANIMATION_DURATION: 0,
   DEFAULT_FILTER: 'Muscles',
 };
 
@@ -164,17 +164,29 @@ class Templates {
           <div class="workout-rating-left">
             <div class="workout-badge">WORKOUT</div>
             <div class="rating">
-              ${exercise.rating || 4.5} <span class="star">★</span>
+              ${exercise.rating} <span class="star">
+                <svg width="14" height="14">
+                  <use href="./img/icons.svg#icon-star-full"></use>
+                </svg>
+              </span>
             </div>
           </div>
-          <button class="start-btn">Start <span class="arrow">→</span></button>
+          <button class="start-btn">Start <span class="arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" style="stroke: #242424;">
+              <use href="./img/icons.svg#icon-arrow-start"></use>
+            </svg>
+          </span></button>
         </div>
         <div class="exercise-middle-row">
-          <div class="exercise-icon">⚡</div>
+          <div class="exercise-icon">
+            <svg width="20" height="20">
+              <use href="./img/icons.svg#icon-runner"></use>
+            </svg>
+          </div>
           <h3 class="exercise-title">${exercise.name}</h3>
         </div>
         <div class="exercise-bottom-row">
-          <span><span class="meta-label">Burned calories:</span> <span class="meta-value">${exercise.burnedCalories || 150} / 3 min</span></span>
+          <span><span class="meta-label">Burned calories:</span> <span class="meta-value">${exercise.burnedCalories}</span></span>
           <span><span class="meta-label">Body part:</span> <span class="meta-value">${exercise.bodyPart}</span></span>
           <span><span class="meta-label">Target:</span> <span class="meta-value">${exercise.target}</span></span>
         </div>
@@ -189,7 +201,11 @@ class Templates {
 
     // Previous button
     pages.push(`
-      <button class="page-btn nav-btn prev" ${currentPage === 1 ? 'disabled' : ''} data-page="prev"></button>
+      <button class="page-btn nav-btn prev" ${currentPage === 1 ? 'disabled' : ''} data-page="prev">
+        <svg width="20" height="20">
+          <use href="./img/icons.svg#icon-nav-arrow"></use>
+        </svg>
+      </button>
     `);
 
     // Page numbers
@@ -197,7 +213,11 @@ class Templates {
 
     // Next button
     pages.push(`
-      <button class="page-btn nav-btn next" ${currentPage === totalPages ? 'disabled' : ''} data-page="next"></button>
+      <button class="page-btn nav-btn next" ${currentPage === totalPages ? 'disabled' : ''} data-page="next">
+        <svg width="20" height="20">
+          <use href="./img/icons.svg#icon-nav-arrow"></use>
+        </svg>
+      </button>
     `);
 
     return `<div class="muscles-pagination">${pages.join('')}</div>`;
