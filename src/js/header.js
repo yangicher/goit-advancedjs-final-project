@@ -63,10 +63,12 @@ function updateActiveNavState() {
     const linkHash = link.getAttribute('href');
     const navItem = link.closest('.nav-item');
 
-    if (linkHash === currentHash || (currentHash === '#' && linkHash === './#')) {
-      navItem.classList.add('selected');
-    } else {
-      navItem.classList.remove('selected');
+    if (navItem) {
+      if (linkHash === currentHash || (currentHash === '#' && linkHash === './#')) {
+        navItem.classList.add('selected');
+      } else {
+        navItem.classList.remove('selected');
+      }
     }
   });
 
