@@ -165,21 +165,21 @@ class Templates {
             <div class="rating">
               ${exercise.rating} <span class="star">
                 <svg width="14" height="14">
-                  <use href="/img/icons.svg#icon-star-full"></use>
+                  <use href="./img/icons.svg#icon-star-full"></use>
                 </svg>
               </span>
             </div>
           </div>
           <button class="start-btn">Start <span class="arrow">
             <svg width="16" height="16" viewBox="0 0 16 16" style="stroke: #242424;">
-              <use href="/img/icons.svg#icon-arrow-start"></use>
+              <use href="./img/icons.svg#icon-arrow-start"></use>
             </svg>
           </span></button>
         </div>
         <div class="exercise-middle-row">
           <div class="exercise-icon">
             <svg width="20" height="20">
-              <use href="/img/icons.svg#icon-runner"></use>
+              <use href="./img/icons.svg#icon-runner"></use>
             </svg>
           </div>
           <h3 class="exercise-title">${exercise.name}</h3>
@@ -202,7 +202,7 @@ class Templates {
     pages.push(`
       <button class="page-btn nav-btn prev" ${currentPage === 1 ? 'disabled' : ''} data-page="prev">
         <svg width="20" height="20">
-          <use href="/img/icons.svg#icon-nav-arrow"></use>
+          <use href="./img/icons.svg#icon-nav-arrow"></use>
         </svg>
       </button>
     `);
@@ -214,7 +214,7 @@ class Templates {
     pages.push(`
       <button class="page-btn nav-btn next" ${currentPage === totalPages ? 'disabled' : ''} data-page="next">
         <svg width="20" height="20">
-          <use href="/img/icons.svg#icon-nav-arrow"></use>
+          <use href="./img/icons.svg#icon-nav-arrow"></use>
         </svg>
       </button>
     `);
