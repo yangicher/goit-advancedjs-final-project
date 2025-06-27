@@ -1,0 +1,452 @@
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+
+.author {
+    color: #F4F4F4;
+}
+
+
+.container {
+  max-width: 1440px;
+
+  padding: 40px 32px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 32px;
+
+}
+
+.favorites-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.left-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quote-block {
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.quote-block h2 {
+
+}
+
+.info-row {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.info-block {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 20px;
+  flex: 1;
+  width: 239px;
+  height: 141px;
+  box-sizing: border-box;
+  border: none;
+
+}
+
+.info-image {
+  flex: 1;
+}
+
+.info-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.right-column {
+  flex: 2;
+}
+
+.favorites-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.exercise-card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  transition: transform 0.2s;
+  height: 141px;
+  width: 405px;
+}
+
+
+.exercise-title {
+  font-size: 1.3rem;
+
+}
+
+.exercise-details {
+  list-style: none;
+  padding: 0;
+
+}
+
+.exercise-details li {
+
+}
+
+.exercise-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.start-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: #d9534f;
+}
+
+.remove-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #d9534f;
+}
+
+@media (max-width: 992px) {
+  .favorites-layout {
+    flex-direction: column;
+  }
+
+  .info-row {
+    flex-direction: column;
+  }
+
+  .favorites-list {
+
+  }
+}
+
+
+.quote-block {
+  width: 494px;
+  height: 230px;
+  background-color: #242424;
+  color: #fff;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.quote-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.quote-content {
+  text-align: center;
+  flex: 1;
+}
+
+.quote-content h2 {
+  font-size: 1.4rem;
+
+}
+
+.quote-content p {
+  font-size: 1rem;
+  margin: 0;
+
+
+
+}
+
+.quote-block h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    color: #F4F4F4;
+}
+
+
+
+
+.quote-block p {
+    padding: 0;
+    margin: 0;
+    margin-top: 14px;
+    font-size: 14px;
+
+}
+
+
+.quote-icon{
+    margin-right: 16px;
+}
+
+
+
+.info-icon{
+margin-bottom: 0;
+}
+
+.li {
+    margin: 0;
+    margin-top: 15px;
+    margin-bottom: 6PX;
+    font-size: 24px;
+}
+
+.la{
+
+    font-size: 14px;
+        color: #A1A1A1;
+        margin: 0;
+}
+
+
+
+
+
+
+
+
+/* === FAVORITES LIST === */
+.favorites-scroll-wrapper {
+  max-height: 487px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+  width: 840px;
+}
+
+.favorites-scroll-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.favorites-scroll-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.favorites-scroll-wrapper::-webkit-scrollbar-thumb {
+  background-color: #242424;
+  border-radius: 10px;
+}
+
+.favorites-list {
+      width: 826px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+
+#favoritesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+
+
+.exercise-card .top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  border: 1px solid black;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+
+
+
+.start-btn {
+  padding: 6px 12px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.remove-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #888;
+}
+
+.no-favorites-msg {
+  color: #666;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.quote {
+  margin-top: 40px;
+  font-style: italic;
+  color: #333;
+  font-size: 16px;
+}
+
+.exercise-item {
+  /* Додаємо анімацію для плавної зміни тіні */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.exercise-item:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+    .exercise-item {
+      background: #fff;
+      border-radius: 14px;
+
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 400px;
+width: 405px;
+    height: 141px;
+        box-sizing: border-box;
+}
+    
+
+    .exercise-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .workout-rating-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .workout-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border: 1px solid #000;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .icon-top {
+      width: 18px;
+      height: 18px;
+    }
+
+    .start-btn {
+      background: transparent;     /* прибрано фон */
+      color: #000;
+      padding: 6px 14px;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .start-btn .arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .start-btn:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    .exercise-middle-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .exercise-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .exercise-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .meta-line {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.4;
+        font-size: 12px;
+    }
+
+
+
+
+
+    /* Змінено колір для мета-лейблів */
+.meta-label {
+  color: #A7A7A7;
+  font-weight: 500;
+
+}
+
+.no-favorites-msg{
+    text-align: center;
+    width: 554px;
+margin-left: 100px;
+margin-top: 100px;
+}
+
+.textt{
+    color: #A1A1A1;
+}
