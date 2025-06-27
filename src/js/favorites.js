@@ -1,6 +1,9 @@
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 const container = document.getElementById('favoritesList');
 
+// Очистити контейнер перед додаванням
+container.innerHTML = '';
+
 // === Якщо порожньо — показати повідомлення ===
 if (favorites.length === 0) {
   container.innerHTML = `<p class="no-favorites-msg">
@@ -62,7 +65,7 @@ container.addEventListener('click', e => {
   }
 });
 
-// === Функція для отримання фаворитів з localStorage ===
+// === Функція для отримання фаворитів з localStorage (експортована) ===
 export const getFavorites = () => {
   const stored = localStorage.getItem('favorites');
   try {
@@ -72,20 +75,6 @@ export const getFavorites = () => {
     return [];
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
