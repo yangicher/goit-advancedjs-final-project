@@ -1,11 +1,6 @@
-body {
-  font-family: 'DM Sans', sans-serif;
-  background-color: #f7f7f7;
-  margin: 0;
-  padding: 0;
-  color: #333;
+.favorites-section{
+  display: none;
 }
-
 
 .author {
     color: #F4F4F4;
