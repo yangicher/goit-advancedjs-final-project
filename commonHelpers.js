@@ -14,21 +14,21 @@ import{a as L}from"./assets/vendor-DDD7fsZd.js";(function(){const e=document.cre
             <div class="rating">
               ${e.rating} <span class="star">
                 <svg width="14" height="14">
-                  <use href="/img/icons.svg#icon-star-full"></use>
+                  <use href="./img/icons.svg#icon-star-full"></use>
                 </svg>
               </span>
             </div>
           </div>
           <button class="start-btn">Start <span class="arrow">
             <svg width="16" height="16" viewBox="0 0 16 16" style="stroke: #242424;">
-              <use href="/img/icons.svg#icon-arrow-start"></use>
+              <use href="./img/icons.svg#icon-arrow-start"></use>
             </svg>
           </span></button>
         </div>
         <div class="exercise-middle-row">
           <div class="exercise-icon">
             <svg width="20" height="20">
-              <use href="/img/icons.svg#icon-runner"></use>
+              <use href="./img/icons.svg#icon-runner"></use>
             </svg>
           </div>
           <h3 class="exercise-title">${e.name}</h3>
@@ -42,13 +42,13 @@ import{a as L}from"./assets/vendor-DDD7fsZd.js";(function(){const e=document.cre
     `}static pagination(e,t){if(t<=1)return"";const s=[];return s.push(`
       <button class="page-btn nav-btn prev" ${e===1?"disabled":""} data-page="prev">
         <svg width="20" height="20">
-          <use href="/img/icons.svg#icon-nav-arrow"></use>
+          <use href="./img/icons.svg#icon-nav-arrow"></use>
         </svg>
       </button>
     `),s.push(c.generatePageNumbers(e,t)),s.push(`
       <button class="page-btn nav-btn next" ${e===t?"disabled":""} data-page="next">
         <svg width="20" height="20">
-          <use href="/img/icons.svg#icon-nav-arrow"></use>
+          <use href="./img/icons.svg#icon-nav-arrow"></use>
         </svg>
       </button>
     `),`<div class="muscles-pagination">${s.join("")}</div>`}static generatePageNumbers(e,t){const s=[];if(t<=5)for(let i=1;i<=t;i++)s.push(`<button class="page-btn ${i===e?"active":""}" data-page="${i}">${i}</button>`);else{s.push(`<button class="page-btn ${e===1?"active":""}" data-page="1">1</button>`),e>3&&s.push('<span class="page-dots">...</span>');const i=Math.max(2,e-1),r=Math.min(t-1,e+1);for(let n=i;n<=r;n++)n!==1&&n!==t&&s.push(`<button class="page-btn ${n===e?"active":""}" data-page="${n}">${n}</button>`);e<t-2&&s.push('<span class="page-dots">...</span>'),t>1&&s.push(`<button class="page-btn ${t===e?"active":""}" data-page="${t}">${t}</button>`)}return s.join("")}static loadingTemplate(e){return`<div class="loading" style="height: ${e-80}px;">Loading...</div>`}static errorTemplate(e){return`<div class="error">${e}</div>`}static contentWrapper(e,t=""){return`
