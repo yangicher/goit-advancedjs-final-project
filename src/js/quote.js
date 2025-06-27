@@ -1,9 +1,8 @@
 import { get } from './api';
 
-// Check and update quote data when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
   await checkAndUpdateData();
-});
+})
 
 async function checkAndUpdateData() {
   const stored = localStorage.getItem('quoteData');

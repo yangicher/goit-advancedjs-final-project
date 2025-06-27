@@ -6,7 +6,10 @@ export default class Modal {
     this.#rootSelector = rootSelector;
     this.#ratingModal = new RatingModal(this.#rootSelector);
 
-    this.#rootElement.addEventListener('rating-modal:close', this.#closeRatingModalHandler);
+    this.#rootElement.addEventListener(
+      'rating-modal:close',
+      this.#closeRatingModalHandler
+    );
   }
   #rootSelector;
   #isShown = false;
@@ -152,11 +155,16 @@ export default class Modal {
   #showRatingModalHandler = () => {
     this.hideModal();
     this.#ratingModal.showModal(this.#currentData._id);
-    
   };
 
   #closeRatingModalHandler = () => {
     this.showModal(this.#currentData);
+  };
+
+  #onEscapeKeydown = e => {
+    if (e.key === 'Escape') {
+      this.hideModal();
+    }
   };
 
   showModal = props => {
@@ -172,15 +180,17 @@ export default class Modal {
       this.#showRatingModalHandler
     );
 
+    window.addEventListener('keydown', this.#onEscapeKeydown);
+
     this.#updateFavoriteButtonText();
     this.#isShown = true;
   };
 
   hideModal = () => {
     if (!this.#isShown) return;
-
+    
+    window.removeEventListener('keydown', this.#onEscapeKeydown);
     this.#rootElement.innerHTML = '';
     this.#isShown = false;
   };
 }
-
