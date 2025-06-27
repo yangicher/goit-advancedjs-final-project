@@ -114,3 +114,72 @@ async function fetchQuoteOfTheDay() {
 }
 
 fetchQuoteOfTheDay();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import { get } from './api';
+
+window.addEventListener('DOMContentLoaded', async () => {
+  await checkAndUpdateData();
+});
+
+async function checkAndUpdateData() {
+  const stored = localStorage.getItem('quoteData');
+  const today = new Date().toISOString().slice(0, 10);
+
+  if (stored) {
+    const data = JSON.parse(stored);
+    if (data.date === today) {
+      updateHTML(data);
+      return;
+    }
+  }
+
+  try {
+    const data = await get('quote');
+
+    const dataToStore = {
+      date: today,
+      author: data.author,
+      quote: data.quote,
+    };
+
+    localStorage.setItem('quoteData', JSON.stringify(dataToStore));
+    updateHTML(dataToStore);
+  } catch (error) {
+    console.error('Не вдалося отримати цитату:', error);
+  }
+}
+
+function updateHTML(data) {
+  const quoteElem = document.querySelector('.js-quote');
+  const authorElem = document.querySelector('.js-author');
+
+  if (!data || !quoteElem || !authorElem) {
+    console.warn('Не знайдено елементи для вставки цитати');
+    return;
+  }
+
+  quoteElem.textContent = data.quote;
+  authorElem.textContent = data.author;
+}
