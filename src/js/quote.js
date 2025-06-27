@@ -1,36 +1,8 @@
 import { get } from './api';
 
-window.addEventListener('DOMContentLoaded', async () => {
-  const quoteUrl = './partials/quote.html';
-  const isDesktop = window.innerWidth >= 1440;
-
-  try {
-    const response = await fetch(quoteUrl);
-    if (!response.ok) throw new Error('Не вдалося завантажити quote.html');
-    const quoteContent = await response.text();
-
-    if (isDesktop) {
-      const sidebar = document.querySelector('.exercises-sidebar');
-      if (!sidebar) {
-        console.error('Не знайдено елемент .exercises-sidebar');
-        return;
-      }
-      sidebar.innerHTML = quoteContent;
-    } else {
-      const exercisesPage = document.querySelector('.exercises-page');
-      if (!exercisesPage) {
-        console.error('Не знайдено елемент .exercises-page');
-        return;
-      }
-
-      console.log(quoteContent);
-      exercisesPage.insertAdjacentHTML('afterend', quoteContent);
-    }
-
-    await checkAndUpdateData();
-  } catch (error) {
-    console.error('Помилка завантаження quote.html:', error);
-  }
+// Check and update quote data when DOM is loaded
+document.addEventListener('DOMContentLoaded', async () => {
+  await checkAndUpdateData();
 });
 
 async function checkAndUpdateData() {

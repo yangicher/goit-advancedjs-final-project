@@ -163,13 +163,25 @@ class Templates {
           <div class="workout-rating-left">
             <div class="workout-badge">WORKOUT</div>
             <div class="rating">
-              ${exercise.rating} <span class="star"><img src="/img/icons/star.svg" alt="star" /></span>
+              ${exercise.rating} <span class="star">
+                <svg width="14" height="14">
+                  <use href="/img/icons.svg#icon-star-full"></use>
+                </svg>
+              </span>
             </div>
           </div>
-          <button class="start-btn">Start <span class="arrow"><img src="/img/icons/start-arrow.svg" alt="Start" /></span></button>
+          <button class="start-btn">Start <span class="arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" style="stroke: #242424;">
+              <use href="/img/icons.svg#icon-arrow-start"></use>
+            </svg>
+          </span></button>
         </div>
         <div class="exercise-middle-row">
-          <div class="exercise-icon"><img src="/img/icons/exercise-icon.svg" /></div>
+          <div class="exercise-icon">
+            <svg width="20" height="20">
+              <use href="/img/icons.svg#icon-runner"></use>
+            </svg>
+          </div>
           <h3 class="exercise-title">${exercise.name}</h3>
         </div>
         <div class="exercise-bottom-row">
@@ -188,7 +200,11 @@ class Templates {
 
     // Previous button
     pages.push(`
-      <button class="page-btn nav-btn prev" ${currentPage === 1 ? 'disabled' : ''} data-page="prev"></button>
+      <button class="page-btn nav-btn prev" ${currentPage === 1 ? 'disabled' : ''} data-page="prev">
+        <svg width="20" height="20">
+          <use href="/img/icons.svg#icon-nav-arrow"></use>
+        </svg>
+      </button>
     `);
 
     // Page numbers
@@ -196,7 +212,11 @@ class Templates {
 
     // Next button
     pages.push(`
-      <button class="page-btn nav-btn next" ${currentPage === totalPages ? 'disabled' : ''} data-page="next"></button>
+      <button class="page-btn nav-btn next" ${currentPage === totalPages ? 'disabled' : ''} data-page="next">
+        <svg width="20" height="20">
+          <use href="/img/icons.svg#icon-nav-arrow"></use>
+        </svg>
+      </button>
     `);
 
     return `<div class="muscles-pagination">${pages.join('')}</div>`;
