@@ -500,15 +500,29 @@ border-radius: 20px;
 
 
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 680px) {
 
 .info-row {
     display: table-column;
     gap: 20px;
+            width: 100%;
 
     }
-}
 
 
 
 
+        .info-block {
+        width: 100%;
+        }
+
+
+    .info-image {
+        background-image: url(/img/quote/quote-fav-mob@1x.webp);
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        border-radius: 20px;
+        margin-top: 20px;
+    }
+  }
