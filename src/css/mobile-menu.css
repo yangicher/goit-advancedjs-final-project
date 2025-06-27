@@ -69,49 +69,6 @@
     color: var(--color-black);
 }
 
-#nav-container .soc-items {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 0;
-    list-style: none;
-    margin-top: auto;
-    margin-bottom: 20px;
-}
-
-#nav-container .soc-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    background-color: transparent;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: background-color 0.3s ease;
-    overflow: visible;
-}
-
-#nav-container .soc-link:hover,
-#nav-container .soc-link:focus {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-#nav-container .soc-items .icon {
-    width: 26px;
-    height: 26px;
-    fill: var(--color-white);
-    color: var(--color-white);
-    stroke: none;
-}
-
-#nav-container .soc-items .soc-link svg,
-#nav-container .soc-items .soc-link use {
-    fill: var(--color-white);
-    color: var(--color-white);
-    stroke: none;
-} 
-
 @media screen and (min-width: 768px) {
     .menu {
         max-width: 384px;
