@@ -162,6 +162,12 @@ export default class RatingModal {
     });
   }
 
+  #onEscapeKeydown = e => {
+    if (e.key === 'Escape') {
+      this.hideModal();
+    }
+  };
+
   showModal(id) {
     if (!id) return;
 
@@ -181,6 +187,7 @@ export default class RatingModal {
       this.#comment = e.target.value;
       this.#toggleButtonDisable();
     });
+    window.addEventListener('keydown', this.#onEscapeKeydown);
 
     this.#isShown = true;
     this.#initStarsListeners();
@@ -189,6 +196,7 @@ export default class RatingModal {
   hideModal = () => {
     if (!this.#isShown) return;
 
+    window.removeEventListener('keydown', this.#onEscapeKeydown);
     this.#rootElement.innerHTML = '';
     this.#dispatchCloseEvent();
     this.#reset();
