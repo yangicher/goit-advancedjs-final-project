@@ -8,6 +8,7 @@ hr {
   background: rgba(4, 4, 4, 0.4);
   position: fixed;
   top: 0;
+  z-index: 10000;
 }
 .modal-container {
   position: relative;
@@ -110,6 +111,8 @@ hr {
   line-height: 129%;
   color: rgba(244, 244, 244, 0.6);
   margin: 20px 0 40px 0;
+  overflow: scroll;
+    max-height: 50px;
 }
 .modal-controls {
   display: flex;
@@ -117,7 +120,7 @@ hr {
   gap: 10px;
 }
 
-.btn {
+.modal-controls .btn {
   border-radius: 30px;
   padding: 12px 0;
   line-height: 1.29;
@@ -130,22 +133,33 @@ hr {
   gap: 8px;
 }
 
-.btn > svg {
+.modal-controls .btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.modal-controls .btn > svg {
   fill: transparent;
   stroke: black;
   height: 20px;
   width: 20px;
 }
 
-.btn.primary {
+.modal-controls .btn.primary {
   background: #f4f4f4;
+  color: #242424;
 }
 
-.btn.secondary {
-  background: #f4f4f4;
+.modal-controls .btn.secondary {
   border: 1px solid #f4f4f4;
   background: none;
   color: #f4f4f4;
+}
+
+@media screen and (max-height: 753px) {
+  .modal-description {
+      display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -159,13 +173,15 @@ hr {
   }
   .modal-description {
     margin: 20px 0 64px 0;
+    max-height: fit-content;
+    overflow: auto;
   }
   .modal-controls {
     flex-direction: row;
     justify-content: flex-end;
     gap: 8px;
   }
-  .btn {
+  .modal-controls .btn {
     padding: 12px 24px;
   }
   .menu-close-button {

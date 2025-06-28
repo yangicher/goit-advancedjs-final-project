@@ -1,32 +1,31 @@
 #scrollTopButton {
   display: none;
   position: fixed;
+  align-items: center;
+  justify-content: center;
   bottom: 20px;
+  height: 40px;
+  width: 40px;
   right: 30px;
   z-index: 99;
   border: none;
   outline: none;
   background-color: var(--primary-color);
   cursor: pointer;
-  padding: 1px;
   border-radius: 50%;
   font-size: 18px;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {
   #scrollTopButton {
-    padding: 10px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  #scrollTopButton {
-    padding: 25px;
+    height: 100px;
+    width: 100px;
   }
 }
 
 #scrollTopButton:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 #scrollTopButton:hover svg {

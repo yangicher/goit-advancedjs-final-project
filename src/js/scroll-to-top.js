@@ -14,7 +14,7 @@ window.onscroll = function () {
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    scrollTopBtn.style.display = 'block';
+    scrollTopBtn.style.display = 'flex';
   } else {
     scrollTopBtn.style.display = 'none';
   }
@@ -22,6 +22,6 @@ function scrollFunction() {
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  document.body.scroll({behavior: 'smooth', top: 0}); // For Safari
+  document.documentElement.scroll({behavior: 'smooth', top: 0}); // For Chrome, Firefox, IE and Opera
 }

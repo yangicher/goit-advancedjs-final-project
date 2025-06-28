@@ -188,6 +188,7 @@ export default class RatingModal {
       this.#toggleButtonDisable();
     });
     window.addEventListener('keydown', this.#onEscapeKeydown);
+    document.body.style.overflow = 'hidden';
 
     this.#isShown = true;
     this.#initStarsListeners();
@@ -197,6 +198,7 @@ export default class RatingModal {
     if (!this.#isShown) return;
 
     window.removeEventListener('keydown', this.#onEscapeKeydown);
+    document.body.style.overflow = 'visible';
     this.#rootElement.innerHTML = '';
     this.#dispatchCloseEvent();
     this.#reset();
