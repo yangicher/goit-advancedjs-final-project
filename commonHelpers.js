@@ -71,7 +71,7 @@ import{a as S}from"./assets/vendor-DDD7fsZd.js";(function(){const e=document.cre
           <button id="add-to-favorite-button" class="btn primary">
             Add to favorites
           </button>
-          <button id="give-a-rating-button" class="btn">
+          <button id="give-a-rating-button" class="btn secondary">
             Give rating
           </button>
         </div>
