@@ -1,71 +1,60 @@
-let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-const container = document.getElementById('favoritesList');
+import { ExercisesList } from './exercises-list';
+import Modal from './modal';
+import { get } from './api';
 
-// Очистити контейнер перед додаванням
-container.innerHTML = '';
-
-// === Якщо порожньо — показати повідомлення ===
-if (favorites.length === 0) {
-  container.innerHTML = `<p class="no-favorites-msg">
-    It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
-  </p>`;
-} else {
-  favorites.forEach(exercise => {
-    const card = document.createElement('div');
-    card.className = 'exercise-card';
-    card.dataset.id = exercise.id;
-
-    card.innerHTML = `
-      <div class="exercise-item">
-        <div class="exercise-top-row">
-          <div class="workout-rating-left">
-            <div class="workout-badge">WORKOUT</div>
-            <img class="icon-top remove-btn" src="./img/icons/trash-01.svg" alt="Trash Icon" data-id="${exercise.id}">
-          </div>
-          <button class="start-btn">Start <span class="arrow"><img src="/img/icons/start-arrow.svg" alt="Start" /></span></button>
-        </div>
-        <div class="exercise-middle-row">
-          <div class="exercise-icon"><img src="/img/icons/exercise-icon.svg" /></div>
-          <h3 class="exercise-title">${exercise.name}</h3>
-        </div>
-        <div class="exercise-bottom-row">
-          <span><span class="meta-label">Burned calories:</span> <span class="meta-value">${exercise.burnedCalories}</span></span>
-          <span><span class="meta-label">Body part:</span> <span class="meta-value">${exercise.bodyPart}</span></span>
-          <span><span class="meta-label">Target:</span> <span class="meta-value">${exercise.target}</span></span>
-        </div>
-      </div>
-    `;
-
-    container.appendChild(card);
-  });
-}
-
-// === Видалити вправу з фаворитів ===
-function removeFromFavorites(id) {
-  favorites = favorites.filter(ex => ex.id !== id);
-  localStorage.setItem('favorites', JSON.stringify(favorites));
-
-  const cardToRemove = document.querySelector(`.exercise-card[data-id="${id}"]`);
-  if (cardToRemove) {
-    cardToRemove.remove();
-  }
-
-  if (favorites.length === 0) {
-    container.innerHTML = `<p class="no-favorites-msg">
-      It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
-    </p>`;
-  }
-}
-
-// === Обробник кліку по кнопці видалення ===
-container.addEventListener('click', e => {
-  if (e.target.classList.contains('remove-btn')) {
-    const id = e.target.dataset.id;
-    removeFromFavorites(id);
-  }
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  initializeFavorites();
+  checkAndUpdateData();
 });
 
-// === Функція для отримання фаворитів з localStorage (експортована) ===
+function initializeFavorites() {
+  // Initialize favorites from localStorage
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const container = document.getElementById('favoritesList');
+
+  if (!container) {
+    console.error('Favorites list container not found');
+    return;
+  }
+
+  const modal = new Modal();
+
+  // Initialize ExercisesList component for favorites
+  const exercisesList = new ExercisesList({
+    container: container,
+    showRating: false,
+    showRemoveBtn: true,
+    onStartClick: (exerciseId) => {
+      console.log('Favorites onStartClick called with ID:', exerciseId); // Debug log
+      const exercise = favorites.find(ex => (ex._id || ex.id) === exerciseId);
+      console.log('Exercise found in favorites:', exercise); // Debug log
+      if (exercise) {
+        modal.showModal(exercise);
+      } else {
+        console.error('Exercise not found in favorites for ID:', exerciseId);
+      }
+    },
+    onRemoveClick: (exerciseId) => {
+      removeFromFavorites(exerciseId, exercisesList);
+    }
+  });
+
+  // Render initial favorites
+  exercisesList.render(favorites);
+}
+
+// === Remove exercise from favorites ===
+function removeFromFavorites(id, exercisesList) {
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  favorites = favorites.filter(ex => (ex._id || ex.id) !== id);
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+
+  // Use the component's method to remove the exercise
+  exercisesList.removeExercise(id);
+}
+
+// === Export function to get favorites ===
 export const getFavorites = () => {
   const stored = localStorage.getItem('favorites');
   try {
@@ -76,30 +65,7 @@ export const getFavorites = () => {
   }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import { get } from './api';
-
-window.addEventListener('DOMContentLoaded', async () => {
-  await checkAndUpdateData();
-});
-
+// === Quote functionality ===
 async function checkAndUpdateData() {
   const stored = localStorage.getItem('quoteData');
   const today = new Date().toISOString().slice(0, 10);

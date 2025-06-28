@@ -1,5 +1,6 @@
 import { get } from './api';
 import Modal from './modal';
+import { ExercisesList, createPaginationHTML } from './exercises-list';
 
 // ===============================================
 // CONSTANTS & CONFIGURATION
@@ -159,107 +160,6 @@ class Templates {
     `;
   }
 
-  static exerciseCard(exercise) {
-    return `
-      <div class="exercise-item">
-        <div class="exercise-top-row">
-          <div class="workout-rating-left">
-            <div class="workout-badge">WORKOUT</div>
-            <div class="rating">
-              ${exercise.rating} <span class="star">
-                <svg width="14" height="14">
-                  <use href="./img/icons.svg#icon-star-full"></use>
-                </svg>
-              </span>
-            </div>
-          </div>
-          <button class="start-btn" data-exercise-id="${exercise._id}">Start <span class="arrow">
-            <svg width="16" height="16" viewBox="0 0 16 16" style="stroke: #242424;">
-              <use href="./img/icons.svg#icon-arrow-start"></use>
-            </svg>
-          </span></button>
-        </div>
-        <div class="exercise-middle-row">
-          <div class="exercise-icon">
-            <svg width="20" height="20">
-              <use href="./img/icons.svg#icon-runner"></use>
-            </svg>
-          </div>
-          <h3 class="exercise-title">${exercise.name}</h3>
-        </div>
-        <div class="exercise-bottom-row">
-          <span><span class="meta-label">Burned calories:</span> <span class="meta-value">${exercise.burnedCalories}</span></span>
-          <span><span class="meta-label">Body part:</span> <span class="meta-value">${exercise.bodyPart}</span></span>
-          <span><span class="meta-label">Target:</span> <span class="meta-value">${exercise.target}</span></span>
-        </div>
-      </div>
-    `;
-  }
-
-  static pagination(currentPage, totalPages) {
-    if (totalPages <= 1) return '';
-
-    const pages = [];
-
-    // Previous button
-    pages.push(`
-      <button class="page-btn nav-btn prev" ${currentPage === 1 ? 'disabled' : ''} data-page="prev">
-        <svg width="20" height="20">
-          <use href="./img/icons.svg#icon-nav-arrow"></use>
-        </svg>
-      </button>
-    `);
-
-    // Page numbers
-    pages.push(Templates.generatePageNumbers(currentPage, totalPages));
-
-    // Next button
-    pages.push(`
-      <button class="page-btn nav-btn next" ${currentPage === totalPages ? 'disabled' : ''} data-page="next">
-        <svg width="20" height="20">
-          <use href="./img/icons.svg#icon-nav-arrow"></use>
-        </svg>
-      </button>
-    `);
-
-    return `<div class="muscles-pagination">${pages.join('')}</div>`;
-  }
-
-  static generatePageNumbers(current, total) {
-    const pages = [];
-
-    if (total <= 5) {
-      for (let i = 1; i <= total; i++) {
-        pages.push(`<button class="page-btn ${i === current ? 'active' : ''}" data-page="${i}">${i}</button>`);
-      }
-    } else {
-      pages.push(`<button class="page-btn ${1 === current ? 'active' : ''}" data-page="1">1</button>`);
-
-      if (current > 3) {
-        pages.push('<span class="page-dots">...</span>');
-      }
-
-      const start = Math.max(2, current - 1);
-      const end = Math.min(total - 1, current + 1);
-
-      for (let i = start; i <= end; i++) {
-        if (i !== 1 && i !== total) {
-          pages.push(`<button class="page-btn ${i === current ? 'active' : ''}" data-page="${i}">${i}</button>`);
-        }
-      }
-
-      if (current < total - 2) {
-        pages.push('<span class="page-dots">...</span>');
-      }
-
-      if (total > 1) {
-        pages.push(`<button class="page-btn ${total === current ? 'active' : ''}" data-page="${total}">${total}</button>`);
-      }
-    }
-
-    return pages.join('');
-  }
-
   static loadingTemplate(height) {
     return `<div class="loading" style="height: ${height - 80}px;">Loading...</div>`;
   }
@@ -286,10 +186,10 @@ class ExercisesManager {
     this.state = new ExercisesState();
     this.elements = this.initializeElements();
     this.modal = new Modal();
+    this.exercisesList = null;
 
     // Don't continue if essential elements are missing
     if (!this.elements) {
-      console.error('Failed to initialize ExercisesManager: required DOM elements not found');
       return;
     }
 
@@ -307,7 +207,6 @@ class ExercisesManager {
 
     // Check if essential elements exist
     if (!elements.musclesGrid || !elements.searchSection) {
-      console.error('Essential DOM elements not found for exercises functionality');
       return null;
     }
 
@@ -337,19 +236,6 @@ class ExercisesManager {
 
   setupExerciseClickListeners() {
     this.elements.musclesGrid.addEventListener('click', (e) => {
-      const startBtn = e.target.closest('.start-btn');
-      if (startBtn) {
-        const exerciseId = startBtn.dataset.exerciseId;
-        const exercise = this.state.exercisesMap.get(exerciseId);
-
-        if (exercise) {
-          this.modal.showModal(exercise);
-        } else {
-          console.error(`Exercise with ID ${exerciseId} not found`);
-        }
-        return;
-      }
-
       const filterCard = e.target.closest('.muscle-card');
       if (filterCard) {
         const filterName = filterCard.dataset.filter;
@@ -393,7 +279,7 @@ class ExercisesManager {
       }
 
       const content = this.buildFiltersContent(data.results);
-      const paginationHTML = Templates.pagination(page, this.state.totalPages);
+      const paginationHTML = createPaginationHTML(page, this.state.totalPages);
       const fullContent = Templates.contentWrapper(content, paginationHTML);
 
       this.updateContainerWithAnimation(fullContent);
@@ -423,11 +309,46 @@ class ExercisesManager {
         return;
       }
 
-      const content = this.buildExercisesContent(filteredExercises, filterName);
-      const paginationHTML = searchTerm ? '' : Templates.pagination(page, this.state.totalPages);
-      const fullContent = Templates.contentWrapper(content, paginationHTML);
+      // Build complete content with back button first
+      const backButton = `<button class="back-btn"><span class="arrow">←</span> Back to ${this.state.currentFilter}</button>`;
+      const paginationHTML = searchTerm ? '' : createPaginationHTML(page, this.state.totalPages);
 
+      // Create the wrapper structure
+      const fullContent = `
+        <div class="content-wrapper">
+          <div class="content-area">
+            <div class="exercises-list-container"></div>
+            ${backButton}
+          </div>
+          ${paginationHTML ? `<div class="pagination-area">${paginationHTML}</div>` : ''}
+        </div>
+      `;
+
+      // Update container with the structure
       this.updateContainerWithAnimation(fullContent);
+
+      // Now find the exercises list container and initialize the component
+      const exercisesListContainer = this.elements.musclesGrid.querySelector('.exercises-list-container');
+
+      // Initialize ExercisesList component with the actual DOM element
+      this.exercisesList = new ExercisesList({
+        container: exercisesListContainer,
+        showRating: true,
+        showRemoveBtn: false,
+        onStartClick: (exerciseId) => {
+          console.log('onStartClick called with ID:', exerciseId);
+          const exercise = this.state.exercisesMap.get(exerciseId);
+          console.log('Exercise found:', exercise);
+          if (exercise) {
+            this.modal.showModal(exercise);
+          } else {
+            console.error('Exercise not found in exercisesMap for ID:', exerciseId);
+          }
+        }
+      });
+
+      // Render exercises - this will also attach event listeners
+      this.exercisesList.render(filteredExercises);
 
     } catch (error) {
       this.showError('Failed to load exercises.');
@@ -440,12 +361,6 @@ class ExercisesManager {
   buildFiltersContent(results) {
     const cardsHTML = results.map(item => Templates.filterCard(item)).join('');
     return `<div class="muscles-cards-wrapper">${cardsHTML}</div>`;
-  }
-
-  buildExercisesContent(exercises, filterName) {
-    const exercisesHTML = exercises.map(exercise => Templates.exerciseCard(exercise)).join('');
-    const backButton = `<button class="back-btn"><span class="arrow">←</span> Back to ${this.state.currentFilter}</button>`;
-    return `<div class="exercises-list">${exercisesHTML}</div>${backButton}`;
   }
 
   // ===============================================

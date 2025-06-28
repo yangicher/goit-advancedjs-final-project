@@ -1,12 +1,11 @@
-.favorites-section{
-  display: none;
-      margin-bottom: 64px;
+.favorites-section {
+  margin-bottom: 64px;
+  overflow: hidden;
 }
 
 .author {
-    color: #F4F4F4;
+  color: #f4f4f4;
 }
-
 
 .container {
   max-width: 1440px;
@@ -17,13 +16,26 @@
 h1 {
   font-size: 2.5rem;
   margin-bottom: 32px;
+}
 
+.favorites-layout .quote-cards-wrapper {
+  flex-direction: initial;
+  flex-wrap: wrap;
+}
+.favorites-layout .news-recommends {
+  display: none;
+}
+
+.favorites-layout .quote-news,
+.favorites-layout .quote-img-wrap {
+  max-width: 47%
 }
 
 .favorites-layout {
   display: flex;
   gap: 40px;
   align-items: flex-start;
+  margin-top: 32px;
 }
 
 .left-column {
@@ -31,17 +43,6 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.quote-block {
-  background-color: #222;
-  color: #fff;
-  padding: 20px;
-  border-radius: 16px;
-}
-
-.quote-block h2 {
-
 }
 
 .info-row {
@@ -60,7 +61,6 @@ h1 {
   height: 141px;
   box-sizing: border-box;
   border: none;
-
 }
 
 .info-image {
@@ -94,150 +94,53 @@ h1 {
   width: 405px;
 }
 
-
-.exercise-title {
-  font-size: 1.3rem;
-
-}
-
-.exercise-details {
-  list-style: none;
-  padding: 0;
-
-}
-
-.exercise-details li {
-
-}
-
-.exercise-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.start-btn {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-
 .remove-btn {
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 5px;
-  color: #d9534f;
-}
-
-.remove-btn svg {
-  width: 20px;
-  height: 20px;
-  fill: #d9534f;
-}
-
-
-
-
-.quote-block {
-  width: 494px;
-  height: 230px;
-  background-color: #242424;
-  color: #fff;
-  border-radius: 20px;
+  padding: 0;
   display: flex;
-  justify-content: space-between;
-  padding: 40px;
-  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
 }
 
-.quote-icon {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
+.remove-btn:hover {
+  opacity: 0.7;
 }
 
-.quote-content {
-  text-align: center;
-  flex: 1;
+.remove-btn img {
+  width: 16px;
+  height: 16px;
 }
 
-.quote-content h2 {
-  font-size: 1.4rem;
-
+.icon-top {
+  margin-left: 8px;
 }
 
-.quote-content p {
-  font-size: 1rem;
-  margin: 0;
-
-
-
-}
-
-.quote-block h2 {
-    padding: 0;
-    margin: 0;
-    font-size: 24px;
-    color: #F4F4F4;
-}
-
-
-
-
-.quote-block p {
-    padding: 0;
-    margin: 0;
-    margin-top: 14px;
-    font-size: 14px;
-
-}
-
-
-.quote-icon{
-    margin-right: 16px;
-}
-
-
-
-.info-icon{
-margin-bottom: 0;
+.info-icon {
+  margin-bottom: 0;
 }
 
 .li {
-    margin: 0;
-    margin-top: 15px;
-    margin-bottom: 6PX;
-    font-size: 24px;
+  margin: 0;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-size: 24px;
 }
 
-.la{
-
-    font-size: 14px;
-        color: #A1A1A1;
-        margin: 0;
+.la {
+  font-size: 14px;
+  color: #a1a1a1;
+  margin: 0;
 }
-
-
-
-
-
-
-
 
 /* === FAVORITES LIST === */
 .favorites-scroll-wrapper {
-  max-height: 487px;
-
+  max-height: calc(100vh - 330px);
   overflow-y: auto;
   overflow-x: hidden;
   padding-right: 10px;
-  width: 860px;
 }
 
 .favorites-scroll-wrapper::-webkit-scrollbar {
@@ -255,44 +158,26 @@ margin-bottom: 0;
 }
 
 .favorites-list {
-      width: 826px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
-
 #favoritesList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
-
+/* Ensure exercise items in favorites don't have the grid wrapper */
+.favorites-list .exercises-list {
+  display: contents; /* This makes the wrapper invisible to grid layout */
+}
 
 .exercise-card .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.badge {
-  border: 1px solid black;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-}
-
-
-
-
-.start-btn {
-  padding: 6px 12px;
-  border: none;
-  background: black;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
 }
 
 .remove-btn {
@@ -313,143 +198,24 @@ margin-bottom: 0;
   padding: 20px;
 }
 
-.quote {
-  margin-top: 40px;
-  font-style: italic;
-  color: #333;
-  font-size: 16px;
+.no-favorites-msg {
+  text-align: center;
+  width: 554px;
+  margin-left: 100px;
+  margin-top: 100px;
 }
 
-.exercise-item {
-  /* Додаємо анімацію для плавної зміни тіні */
-  transition: box-shadow 0.3s ease-in-out;
+.textt {
+  color: #a1a1a1;
 }
 
-.exercise-item:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-    .exercise-item {
-      background: #fff;
-      border-radius: 14px;
-
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-width: 400px;
-width: 405px;
-    height: 141px;
-        box-sizing: border-box;
-}
-    
-
-    .exercise-top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .workout-rating-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .workout-badge {
-      font-size: 12px;
-      padding: 4px 10px;
-      border: 1px solid #000;
-      border-radius: 20px;
-      font-weight: bold;
-    }
-
-
-
-    .start-btn {
-      background: transparent;     /* прибрано фон */
-      color: #000;
-      padding: 6px 14px;
-      border: none;
-      font-size: 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .start-btn .arrow {
-      display: inline-block;
-      transition: transform 0.2s ease;
-    }
-    .start-btn:hover .arrow {
-      transform: translateX(4px);
-    }
-
-    .exercise-middle-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .exercise-icon {
-      width: 24px;
-      height: 24px;
-    }
-
-    .exercise-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0;
-    }
-
-    .meta-line {
-      font-size: 14px;
-      color: #444;
-      line-height: 1.4;
-        font-size: 12px;
-    }
-
-
-
-
-
-    /* Змінено колір для мета-лейблів */
-.meta-label {
-  color: #A7A7A7;
-  font-weight: 500;
-
-}
-
-.no-favorites-msg{
-    text-align: center;
-    width: 554px;
-margin-left: 100px;
-margin-top: 100px;
-}
-
-.textt{
-    color: #A1A1A1;
-}
-
-.qquote-card{
-    max-width: 512px;
-  flex-shrink: 0;
-  border-radius: 20px;
-  background: #242424;
-  padding: 20px;
-}
 .info-image {
   background-image: url('../img/quote/quote-fav-desk@3x.webp');
-width: 239px;
-height: 141px;
-background-size: cover;
-border-radius: 20px;
+  width: 239px;
+  height: 141px;
+  background-size: cover;
+  border-radius: 20px;
 }
-
-
-
-
 
 @media screen and (max-width: 1024px) {
   .favorites-layout {
@@ -460,9 +226,7 @@ border-radius: 20px;
   .right-column {
     width: 100%;
   }
-.qquote-card{
- max-width:719px ; 
-}
+
   .favorites-scroll-wrapper {
     width: 100%;
   }
@@ -478,51 +242,37 @@ border-radius: 20px;
     max-width: 100%;
   }
 
+  .info-image {
+    background-image: url('../img/quote/quote-fav-tab@1x.webp');
+    background-size: cover;
+    background-position: center;
+    width: 45%;
 
+    border-radius: 20px;
+  }
 
-.info-image {
-  background-image: url('../img/quote/quote-fav-tab@1x.webp');
-  background-size: cover;
-  background-position: center;
-  width: 45%;
-
-  border-radius: 20px;
-}
-
-.info-block{
+  .info-block {
     width: 47%;
+  }
 }
-
-
-
-
-}
-
-
 
 @media screen and (max-width: 680px) {
-
-.info-row {
+  .info-row {
     display: table-column;
     gap: 20px;
-            width: 100%;
-
-    }
-
-
-
-
-        .info-block {
-        width: 100%;
-        }
-
-
-    .info-image {
-        background-image: url(/img/quote/quote-fav-mob@1x.webp);
-        background-size: cover;
-        background-position: center;
-        width: 100%;
-        border-radius: 20px;
-        margin-top: 20px;
-    }
+    width: 100%;
   }
+
+  .info-block {
+    width: 100%;
+  }
+
+  .info-image {
+    background-image: url(/img/quote/quote-fav-mob@1x.webp);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+}
