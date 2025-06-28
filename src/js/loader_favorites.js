@@ -1,37 +1,77 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const homeLink = document.querySelector('.nav-link[href="./#"]');
-  const favLink  = document.querySelector('.nav-link[href="./favorites.html"]');
+  // === Elements ===
+  const desktopHomeLink = document.querySelector('.nav-link[href="./#"]');
+  const desktopFavLink = document.querySelector('.nav-link[href="./favorites.html"]');
 
-  const favSection     = document.querySelector('.favorites-section');
-  const exercisesPage  = document.querySelector('.exercises-page');
-  const footerSection  = document.querySelector('.section.footer');
-  const quoteSection   = document.querySelector('.quote');
+  const mobileHomeLink = document.querySelector('.mobile-nav-link[href="./#"]');
+  const mobileFavLink = document.querySelector('.mobile-nav-link[href="#favorites"]');
 
-  function clearMenuSelection() {
-    document.querySelectorAll('.nav-item').forEach(li => li.classList.remove('selected'));
+  const favSection = document.querySelector('.favorites-section');
+  const exercisesPage = document.querySelector('.exercises-page');
+  const footerSection = document.querySelector('.section.footer');
+  const quoteSection = document.querySelector('.quote');
+
+  const mobileMenu = document.getElementById('mobile-menu-backdrop');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+  // === Utils ===
+  function closeMobileMenu() {
+    if (mobileMenu) {
+      mobileMenu.classList.remove('is-open');
+      mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+    }
   }
 
-  favLink.addEventListener('click', (e) => {
+  function clearNavSelection() {
+    document.querySelectorAll('.nav-item').forEach(li => li.classList.remove('selected'));
+    document.querySelectorAll('.mobile-nav-link').forEach(link => link.classList.remove('active'));
+  }
+
+  function showFavorites() {
+    favSection?.classList.remove('hidden');
+    if (favSection) favSection.style.display = 'block';
+    if (exercisesPage) exercisesPage.style.display = 'none';
+    if (footerSection) footerSection.style.display = 'none';
+    if (quoteSection) quoteSection.style.display = 'none';
+
+    clearNavSelection();
+    desktopFavLink?.closest('.nav-item')?.classList.add('selected');
+    mobileFavLink?.classList.add('active');
+
+    closeMobileMenu();
+  }
+
+  function showHome() {
+    if (favSection) favSection.style.display = 'none';
+    if (exercisesPage) exercisesPage.style.display = 'block';
+    if (footerSection) footerSection.style.display = 'block';
+    if (quoteSection) quoteSection.style.display = 'block';
+
+    clearNavSelection();
+    desktopHomeLink?.closest('.nav-item')?.classList.add('selected');
+    mobileHomeLink?.classList.add('active');
+
+    closeMobileMenu();
+  }
+
+  // === Event Listeners ===
+  desktopHomeLink?.addEventListener('click', (e) => {
     e.preventDefault();
-
-    if (favSection)     favSection.style.display     = 'block';
-    if (exercisesPage)  exercisesPage.style.display  = 'none';
-    if (footerSection)  footerSection.style.display  = 'none';
-    if (quoteSection)   quoteSection.style.display   = 'none'; // ❗️Приховати
-
-    clearMenuSelection();
-    favLink.parentElement.classList.add('selected');
+    showHome();
   });
 
-  homeLink.addEventListener('click', (e) => {
+  desktopFavLink?.addEventListener('click', (e) => {
     e.preventDefault();
+    showFavorites();
+  });
 
-    if (favSection)     favSection.style.display     = 'none';
-    if (exercisesPage)  exercisesPage.style.display  = 'block';
-    if (footerSection)  footerSection.style.display  = 'block';
-    if (quoteSection)   quoteSection.style.display   = 'block'; // ❗️Показати
+  mobileHomeLink?.addEventListener('click', (e) => {
+    e.preventDefault();
+    showHome();
+  });
 
-    clearMenuSelection();
-    homeLink.parentElement.classList.add('selected');
+  mobileFavLink?.addEventListener('click', (e) => {
+    e.preventDefault();
+    showFavorites();
   });
 });

@@ -140,3 +140,22 @@ function updateHTML(data) {
   quoteElem.textContent = data.quote;
   authorElem.textContent = data.author;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
