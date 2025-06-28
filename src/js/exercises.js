@@ -1,4 +1,5 @@
 import { get } from './api';
+import Modal from './modal';
 
 // ===============================================
 // CONSTANTS & CONFIGURATION
@@ -37,6 +38,7 @@ class ExercisesState {
     this.selectedBodyPart = '';
     this.allExercises = [];
     this.filteredExercises = [];
+    this.exercisesMap = new Map();
     this.currentHeight = 0;
     this.searchTimeout = null;
   }
@@ -46,6 +48,7 @@ class ExercisesState {
     this.totalPages = 1;
     this.allExercises = [];
     this.filteredExercises = [];
+    this.exercisesMap.clear();
     this.selectedBodyPart = '';
     this.clearSearchTimeout();
   }
@@ -163,13 +166,25 @@ class Templates {
           <div class="workout-rating-left">
             <div class="workout-badge">WORKOUT</div>
             <div class="rating">
-              ${exercise.rating} <span class="star"><img src="/img/icons/star.svg" alt="star" /></span>
+              ${exercise.rating} <span class="star">
+                <svg width="14" height="14">
+                  <use href="./img/icons.svg#icon-star-full"></use>
+                </svg>
+              </span>
             </div>
           </div>
-          <button class="start-btn">Start <span class="arrow"><img src="/img/icons/start-arrow.svg" alt="Start" /></span></button>
+          <button class="start-btn" data-exercise-id="${exercise._id}">Start <span class="arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" style="stroke: #242424;">
+              <use href="./img/icons.svg#icon-arrow-start"></use>
+            </svg>
+          </span></button>
         </div>
         <div class="exercise-middle-row">
-          <div class="exercise-icon"><img src="/img/icons/exercise-icon.svg" /></div>
+          <div class="exercise-icon">
+            <svg width="20" height="20">
+              <use href="./img/icons.svg#icon-runner"></use>
+            </svg>
+          </div>
           <h3 class="exercise-title">${exercise.name}</h3>
         </div>
         <div class="exercise-bottom-row">
@@ -188,7 +203,11 @@ class Templates {
 
     // Previous button
     pages.push(`
-      <button class="page-btn nav-btn prev" ${currentPage === 1 ? 'disabled' : ''} data-page="prev"></button>
+      <button class="page-btn nav-btn prev" ${currentPage === 1 ? 'disabled' : ''} data-page="prev">
+        <svg width="20" height="20">
+          <use href="./img/icons.svg#icon-nav-arrow"></use>
+        </svg>
+      </button>
     `);
 
     // Page numbers
@@ -196,7 +215,11 @@ class Templates {
 
     // Next button
     pages.push(`
-      <button class="page-btn nav-btn next" ${currentPage === totalPages ? 'disabled' : ''} data-page="next"></button>
+      <button class="page-btn nav-btn next" ${currentPage === totalPages ? 'disabled' : ''} data-page="next">
+        <svg width="20" height="20">
+          <use href="./img/icons.svg#icon-nav-arrow"></use>
+        </svg>
+      </button>
     `);
 
     return `<div class="muscles-pagination">${pages.join('')}</div>`;
@@ -262,6 +285,7 @@ class ExercisesManager {
   constructor() {
     this.state = new ExercisesState();
     this.elements = this.initializeElements();
+    this.modal = new Modal();
 
     // Don't continue if essential elements are missing
     if (!this.elements) {
@@ -296,6 +320,7 @@ class ExercisesManager {
   setupEventListeners() {
     this.setupTabListeners();
     this.setupSearchListeners();
+    this.setupExerciseClickListeners();
   }
 
   setupTabListeners() {
@@ -308,6 +333,45 @@ class ExercisesManager {
     this.elements.searchInput.addEventListener('input', (e) => this.handleSearchInput(e));
     this.elements.searchInput.addEventListener('keydown', (e) => this.handleSearchKeydown(e));
     this.elements.searchClearBtn.addEventListener('click', (e) => this.handleSearchClear(e));
+  }
+
+  setupExerciseClickListeners() {
+    this.elements.musclesGrid.addEventListener('click', (e) => {
+      const startBtn = e.target.closest('.start-btn');
+      if (startBtn) {
+        const exerciseId = startBtn.dataset.exerciseId;
+        const exercise = this.state.exercisesMap.get(exerciseId);
+
+        if (exercise) {
+          this.modal.showModal(exercise);
+        } else {
+          console.error(`Exercise with ID ${exerciseId} not found`);
+        }
+        return;
+      }
+
+      const filterCard = e.target.closest('.muscle-card');
+      if (filterCard) {
+        const filterName = filterCard.dataset.filter;
+        const filterType = filterCard.dataset.filterType;
+        this.renderExercisesList(filterName, filterType, '', 1);
+        return;
+      }
+
+      const backBtn = e.target.closest('.back-btn');
+      if (backBtn) {
+        this.state.reset();
+        this.clearSearchInput();
+        this.renderFilters(this.state.currentFilter, 1);
+        return;
+      }
+
+      const pageBtn = e.target.closest('.page-btn');
+      if (pageBtn) {
+        this.handlePagination(pageBtn, this.state.selectedBodyPart ? 'exercises' : 'filters');
+        return;
+      }
+    });
   }
 
   // ===============================================
@@ -333,7 +397,6 @@ class ExercisesManager {
       const fullContent = Templates.contentWrapper(content, paginationHTML);
 
       this.updateContainerWithAnimation(fullContent);
-      this.attachFilterEventListeners();
 
     } catch (error) {
       this.showError('Failed to load data.');
@@ -365,7 +428,6 @@ class ExercisesManager {
       const fullContent = Templates.contentWrapper(content, paginationHTML);
 
       this.updateContainerWithAnimation(fullContent);
-      this.attachExercisesEventListeners(searchTerm);
 
     } catch (error) {
       this.showError('Failed to load exercises.');
@@ -398,6 +460,11 @@ class ExercisesManager {
     this.state.allExercises = data.results || [];
     this.state.totalPages = data.totalPages || 1;
     this.state.selectedBodyPart = filterName;
+
+    this.state.exercisesMap.clear();
+    this.state.allExercises.forEach(exercise => {
+      this.state.exercisesMap.set(exercise._id, exercise);
+    });
   }
 
   filterExercises(searchTerm) {
@@ -450,7 +517,6 @@ class ExercisesManager {
     const message = `No exercises found${searchTerm ? ` matching "${searchTerm}"` : ''}.`;
     const backButton = `<button class="back-btn"><span class="arrow">←</span> Back to ${this.state.currentFilter}</button>`;
     DOMUtils.setContent(this.elements.musclesGrid, Templates.errorTemplate(message) + backButton);
-    this.attachBackButtonListener();
   }
 
   // ===============================================
@@ -523,48 +589,6 @@ class ExercisesManager {
   updateSearchClearButton() {
     const hasValue = this.elements.searchInput.value.trim().length > 0;
     this.elements.searchClearBtn.style.display = hasValue ? 'flex' : 'none';
-  }
-
-  // ===============================================
-  // EVENT LISTENER ATTACHMENTS
-  // ===============================================
-  attachFilterEventListeners() {
-    this.attachFilterCardListeners();
-    this.attachPaginationListeners('filters');
-  }
-
-  attachExercisesEventListeners(searchTerm) {
-    this.attachBackButtonListener();
-    if (!searchTerm) {
-      this.attachPaginationListeners('exercises');
-    }
-  }
-
-  attachFilterCardListeners() {
-    this.elements.musclesGrid.querySelectorAll('.muscle-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const filterName = card.dataset.filter;
-        const filterType = card.dataset.filterType;
-        this.renderExercisesList(filterName, filterType, '', 1);
-      });
-    });
-  }
-
-  attachBackButtonListener() {
-    const backBtn = this.elements.musclesGrid.querySelector('.back-btn');
-    if (backBtn) {
-      backBtn.addEventListener('click', () => {
-        this.state.reset();
-        this.clearSearchInput();
-        this.renderFilters(this.state.currentFilter, 1);
-      });
-    }
-  }
-
-  attachPaginationListeners(type) {
-    this.elements.musclesGrid.querySelectorAll('.page-btn').forEach(btn => {
-      btn.addEventListener('click', () => this.handlePagination(btn, type));
-    });
   }
 
   handlePagination(btn, type) {
