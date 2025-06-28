@@ -181,6 +181,7 @@ export default class Modal {
     );
 
     window.addEventListener('keydown', this.#onEscapeKeydown);
+    document.body.style.overflow = 'hidden'
 
     this.#updateFavoriteButtonText();
     this.#isShown = true;
@@ -190,6 +191,7 @@ export default class Modal {
     if (!this.#isShown) return;
     
     window.removeEventListener('keydown', this.#onEscapeKeydown);
+    document.body.style.overflow = 'visible'
     this.#rootElement.innerHTML = '';
     this.#isShown = false;
   };
