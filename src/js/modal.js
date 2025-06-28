@@ -95,7 +95,7 @@ export default class Modal {
           <button id="add-to-favorite-button" class="btn primary">
             Add to favorites
           </button>
-          <button id="give-a-rating-button" class="btn">
+          <button id="give-a-rating-button" class="btn secondary">
             Give rating
           </button>
         </div>
