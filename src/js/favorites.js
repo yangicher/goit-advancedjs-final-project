@@ -22,7 +22,11 @@ if (favorites.length === 0) {
             <div class="workout-badge">WORKOUT</div>
             <img class="icon-top remove-btn" src="./img/icons/trash-01.svg" alt="Trash Icon" data-id="${exercise.id}">
           </div>
-          <button class="start-btn">Start <span class="arrow"><img src="/img/icons/start-arrow.svg" alt="Start" /></span></button>
+          <button class="start-btn" data-exercise-id="${exercise._id}">Start <span class="arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" style="stroke: #242424;">
+              <use href="./img/icons.svg#icon-arrow-start"></use>
+            </svg>
+          </span></button>
         </div>
         <div class="exercise-middle-row">
           <div class="exercise-icon"><img src="/img/icons/exercise-icon.svg" /></div>
@@ -140,15 +144,6 @@ function updateHTML(data) {
   quoteElem.textContent = data.quote;
   authorElem.textContent = data.author;
 }
-
-
-
-
-
-
-
-
-
 
 
 
