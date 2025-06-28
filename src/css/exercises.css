@@ -209,7 +209,7 @@
 
 .muscles-cards-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   margin-bottom: 32px;
   opacity: 0;
@@ -217,7 +217,9 @@
 }
 
 .muscle-card {
-  width: 290px;
+  max-width: 290px;
+  width: 100%;
+  min-width: 200px;
   height: 242px;
   position: relative;
   border-radius: 12px;
@@ -778,13 +780,13 @@
   }
 
   .muscles-cards-wrapper {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 16px;
     justify-items: center;
   }
 
   .muscle-card {
-    width: 335px;
+    width: 225px;
     height: 225px;
   }
 
@@ -800,6 +802,16 @@
   .exercises-tabs {
     display: flex;
     gap: 20px;
+  }
+
+  .exercises-sidebar {
+    width: 100%;
+    order: 2; /* Move sidebar (with quote) after main content */
+  }
+
+  .exercises-main {
+    width: 100%;
+    order: 1;
   }
 }
 
@@ -859,7 +871,9 @@
   }
 
   .muscle-card {
-    width: 335px;
+    max-width: 335px;
+    width: 100%;
+    min-width: 250px;
     height: 225px;
   }
 
@@ -902,16 +916,6 @@
 
   .exercises-content {
     flex-wrap: wrap;
-  }
-
-  .exercises-sidebar {
-    width: 100%;
-    order: 2; /* Move sidebar (with quote) after main content */
-  }
-
-  .exercises-main {
-    width: 100%;
-    order: 1;
   }
 }
 
