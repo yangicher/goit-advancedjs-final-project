@@ -1,10 +1,10 @@
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 const container = document.getElementById('favoritesList');
 
-// Очистити контейнер перед додаванням
+
 container.innerHTML = '';
 
-// === Якщо порожньо — показати повідомлення ===
+
 if (favorites.length === 0) {
   container.innerHTML = `<p class="no-favorites-msg">
     It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
@@ -44,7 +44,7 @@ if (favorites.length === 0) {
   });
 }
 
-// === Видалити вправу з фаворитів ===
+
 function removeFromFavorites(id) {
   favorites = favorites.filter(ex => ex.id !== id);
   localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -61,7 +61,6 @@ function removeFromFavorites(id) {
   }
 }
 
-// === Обробник кліку по кнопці видалення ===
 container.addEventListener('click', e => {
   if (e.target.classList.contains('remove-btn')) {
     const id = e.target.dataset.id;
@@ -69,7 +68,7 @@ container.addEventListener('click', e => {
   }
 });
 
-// === Функція для отримання фаворитів з localStorage (експортована) ===
+
 export const getFavorites = () => {
   const stored = localStorage.getItem('favorites');
   try {
