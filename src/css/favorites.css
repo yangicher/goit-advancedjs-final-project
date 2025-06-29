@@ -1,0 +1,278 @@
+.favorites-section {
+  margin-bottom: 64px;
+  overflow: hidden;
+}
+
+.author {
+  color: #f4f4f4;
+}
+
+.container {
+  max-width: 1440px;
+
+  padding: 0px 32px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 32px;
+}
+
+.favorites-layout .quote-cards-wrapper {
+  flex-direction: initial;
+  flex-wrap: wrap;
+}
+.favorites-layout .news-recommends {
+  display: none;
+}
+
+.favorites-layout .quote-news,
+.favorites-layout .quote-img-wrap {
+  max-width: 47%
+}
+
+.favorites-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-top: 32px;
+}
+
+.left-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-row {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.info-block {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 20px;
+
+  width: 239px;
+  height: 141px;
+  box-sizing: border-box;
+  border: none;
+}
+
+.info-image {
+  flex: 1;
+}
+
+.info-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.right-column {
+  flex: 2;
+}
+
+.favorites-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.exercise-card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  transition: transform 0.2s;
+  height: 141px;
+  width: 405px;
+}
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.remove-btn:hover {
+  opacity: 0.7;
+}
+
+.remove-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-top {
+  margin-left: 8px;
+}
+
+.info-icon {
+  margin-bottom: 0;
+}
+
+.li {
+  margin: 0;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-size: 24px;
+}
+
+.la {
+  font-size: 14px;
+  color: #a1a1a1;
+  margin: 0;
+}
+
+/* === FAVORITES LIST === */
+.favorites-scroll-wrapper {
+  max-height: calc(100vh - 330px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+.favorites-scroll-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.favorites-scroll-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.favorites-scroll-wrapper::-webkit-scrollbar-thumb {
+  background-color: #242424;
+  border-radius: 10px;
+}
+
+.favorites-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+#favoritesList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Ensure exercise items in favorites don't have the grid wrapper */
+.favorites-list .exercises-list {
+  display: contents; /* This makes the wrapper invisible to grid layout */
+}
+
+.exercise-card .top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.remove-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #888;
+}
+
+.no-favorites-msg {
+  color: #666;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.no-favorites-msg {
+  text-align: center;
+  width: 554px;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
+.textt {
+  color: #a1a1a1;
+}
+
+.info-image {
+  background-image: url('../img/quote/quote-fav-desk@3x.webp');
+  width: 239px;
+  height: 141px;
+  background-size: cover;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+  .favorites-layout {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
+
+  .favorites-scroll-wrapper {
+    width: 100%;
+  }
+
+  .favorites-list {
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .exercise-card,
+  .exercise-item {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .info-image {
+    background-image: url('../img/quote/quote-fav-tab@1x.webp');
+    background-size: cover;
+    background-position: center;
+    width: 45%;
+
+    border-radius: 20px;
+  }
+
+  .info-block {
+    width: 47%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .info-row {
+    display: table-column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .info-block {
+    width: 100%;
+  }
+
+  .info-image {
+    background-image: url(/img/quote/quote-fav-mob@1x.webp);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+}

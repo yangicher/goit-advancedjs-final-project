@@ -56,30 +56,16 @@ document.addEventListener('keydown', (e) => {
 });
 
 function updateActiveNavState() {
-  const currentHash = window.location.hash || '#';
+  const isOnFavorites = window.location.pathname.includes('favorites');
+  const targetPath = isOnFavorites ? 'favorites' : 'index.html';
 
-  const desktopNavLinks = document.querySelectorAll('.nav-link');
-  desktopNavLinks.forEach(link => {
-    const linkHash = link.getAttribute('href');
-    const navItem = link.closest('.nav-item');
-
-    if (linkHash === currentHash || (currentHash === '#' && linkHash === './#')) {
-      navItem.classList.add('selected');
-    } else {
-      navItem.classList.remove('selected');
-    }
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.toggle('selected', link.href.includes(targetPath));
   });
 
   mobileNavLinks.forEach(link => {
-    const linkHash = link.getAttribute('href');
-
-    if (linkHash === currentHash || (currentHash === '#' && linkHash === './#')) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    link.classList.toggle('active', link.href.includes(targetPath));
   });
 }
 
-window.addEventListener('load', updateActiveNavState);
-window.addEventListener('hashchange', updateActiveNavState);
+document.addEventListener('DOMContentLoaded', updateActiveNavState);
