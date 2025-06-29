@@ -40,24 +40,25 @@ export default class Modal {
     this.#currentData = data;
 
     const {
-      target,
-      bodyPart,
-      equipment,
-      gifUrl,
-      name,
-      description,
-      rating,
-      burnedCalories,
-      time,
-      popularity,
+      target = 'N/A',
+      bodyPart = 'N/A',
+      equipment = 'N/A',
+      gifUrl = '',
+      name = 'Unknown Exercise',
+      description = 'No description available',
+      rating = 0,
+      burnedCalories = 0,
+      time = 0,
+      popularity = 0,
     } = this.#currentData;
+
     return `<div class="modal-backdrop">
       <div class="modal-container">
         <svg id="menu-close-button" class="menu-close-button">
           <use href="./img/icons.svg#menu-close"></use>
         </svg>
         <div class="info-container">
-          <img src="${gifUrl}" alt="exercise" class="modal-image" />
+          <img src="${gifUrl}" alt="exercise" class="modal-image" onerror="this.src='/src/img/no-image.webp'" />
           <div>
             <p class="modal-name">${name}</p>
             <div class="modal-rating-info">
@@ -84,7 +85,7 @@ export default class Modal {
               </li>
               <li>
                 <p>Burned Calories</p>
-                <p>${burnedCalories} / ${time} min</p>
+                <p>${burnedCalories}${time ? ` / ${time} min` : ''}</p>
               </li>
             </ul>
             <hr />
@@ -143,11 +144,11 @@ export default class Modal {
     return `
     <ul class="modal-rating-stars">
       ${'<li><svg class="active"><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(
-        full
-      )}
+      full
+    )}
       ${'<li><svg><use href="./img/icons.svg#icon-star"></use></svg></li>'.repeat(
-        empty
-      )}
+      empty
+    )}
     </ul>
   `;
   }
@@ -170,26 +171,30 @@ export default class Modal {
   showModal = props => {
     if (this.#isShown) return;
 
-    this.#rootElement.innerHTML = this.#renderModal(props);
+    try {
+      this.#rootElement.innerHTML = this.#renderModal(props);
 
-    this.#addToFavoriteButton?.addEventListener('click', this.#toggleFavorite);
-    this.#backDrop?.addEventListener('click', this.#hideModalHandler);
-    this.#closeButton?.addEventListener('click', this.hideModal);
-    this.#giveRatingButton?.addEventListener(
-      'click',
-      this.#showRatingModalHandler
-    );
+      this.#addToFavoriteButton?.addEventListener('click', this.#toggleFavorite);
+      this.#backDrop?.addEventListener('click', this.#hideModalHandler);
+      this.#closeButton?.addEventListener('click', this.hideModal);
+      this.#giveRatingButton?.addEventListener(
+        'click',
+        this.#showRatingModalHandler
+      );
 
-    window.addEventListener('keydown', this.#onEscapeKeydown);
-    document.body.style.overflow = 'hidden'
+      window.addEventListener('keydown', this.#onEscapeKeydown);
+      document.body.style.overflow = 'hidden'
 
-    this.#updateFavoriteButtonText();
-    this.#isShown = true;
+      this.#updateFavoriteButtonText();
+      this.#isShown = true;
+    } catch (error) {
+      this.#rootElement.innerHTML = '';
+    }
   };
 
   hideModal = () => {
     if (!this.#isShown) return;
-    
+
     window.removeEventListener('keydown', this.#onEscapeKeydown);
     document.body.style.overflow = 'visible'
     this.#rootElement.innerHTML = '';

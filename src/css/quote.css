@@ -4,7 +4,6 @@
 .quote-cards-wrapper {
   max-width: 444px;
   margin: 0 auto;
-  margin-top: 80px;
   display: flex;
   flex-direction: column;
   gap: 20px;
