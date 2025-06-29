@@ -211,6 +211,7 @@
   .quote-img-wrap,
   .quote-news {
     max-width: 444px;
+    width: 100%;
   }
   .news-recommends {
     max-width: 314px;

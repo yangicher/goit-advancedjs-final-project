@@ -14,7 +14,6 @@ function initializeFavorites() {
   const container = document.getElementById('favoritesList');
 
   if (!container) {
-    console.error('Favorites list container not found');
     return;
   }
 

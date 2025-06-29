@@ -1,18 +1,14 @@
-// ===============================================
-// SHARED EXERCISES LIST COMPONENT
-// ===============================================
 
 export class ExercisesList {
   constructor(options = {}) {
     this.container = options.container;
     this.showRating = options.showRating ?? true;
     this.showRemoveBtn = options.showRemoveBtn ?? false;
-    this.onStartClick = options.onStartClick || (() => {});
-    this.onRemoveClick = options.onRemoveClick || (() => {});
+    this.onStartClick = options.onStartClick || (() => { });
+    this.onRemoveClick = options.onRemoveClick || (() => { });
     this.customClass = options.customClass || '';
   }
 
-  // Generate HTML for a single exercise card
   generateExerciseCard(exercise) {
     const ratingHtml = this.showRating ? `
       <div class="rating">
@@ -61,7 +57,6 @@ export class ExercisesList {
     `;
   }
 
-  // Render the complete exercises list
   render(exercises) {
     if (!this.container) {
       console.error('Container not provided for ExercisesList');
@@ -75,18 +70,15 @@ export class ExercisesList {
 
     const exercisesHtml = exercises.map(exercise => this.generateExerciseCard(exercise)).join('');
 
-    // For main page, wrap in exercises-list div
     if (!this.showRemoveBtn) {
       this.container.innerHTML = `<div class="exercises-list">${exercisesHtml}</div>`;
     } else {
-      // For favorites, render directly
       this.container.innerHTML = exercisesHtml;
     }
 
     this.attachEventListeners();
   }
 
-  // Get empty state message
   getEmptyMessage() {
     if (this.showRemoveBtn) {
       return `<p class="no-favorites-msg">
@@ -96,29 +88,26 @@ export class ExercisesList {
     return '<div class="error">No exercises found.</div>';
   }
 
-  // Attach event listeners to rendered elements
   attachEventListeners() {
-    // Start button clicks
     const startBtns = this.container.querySelectorAll('.start-btn');
-    console.log('Found start buttons:', startBtns.length); // Debug log
+
 
     startBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        e.stopPropagation(); // Prevent event bubbling
+        e.stopPropagation();
         const exerciseId = btn.dataset.exerciseId;
-        console.log('Start button clicked, exercise ID:', exerciseId); // Debug log
+        console.log('Start button clicked, exercise ID:', exerciseId);
         this.onStartClick(exerciseId);
       });
     });
 
-    // Remove button clicks (for favorites)
     if (this.showRemoveBtn) {
       const removeBtns = this.container.querySelectorAll('.remove-btn');
       removeBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
-          e.stopPropagation(); // Prevent event bubbling
+          e.stopPropagation();
           const exerciseId = btn.dataset.id;
           this.onRemoveClick(exerciseId);
         });
@@ -126,13 +115,11 @@ export class ExercisesList {
     }
   }
 
-  // Update a single exercise (useful for favorites)
   removeExercise(exerciseId) {
     const exerciseElement = this.container.querySelector(`[data-exercise-id="${exerciseId}"]`);
     if (exerciseElement) {
       exerciseElement.remove();
 
-      // Check if list is now empty
       const remainingExercises = this.container.querySelectorAll('.exercise-item');
       if (remainingExercises.length === 0) {
         this.container.innerHTML = this.getEmptyMessage();
@@ -140,7 +127,6 @@ export class ExercisesList {
     }
   }
 
-  // Clear the list
   clear() {
     if (this.container) {
       this.container.innerHTML = '';
@@ -148,13 +134,11 @@ export class ExercisesList {
   }
 }
 
-// Helper function to create pagination HTML
 export function createPaginationHTML(currentPage, totalPages) {
   if (totalPages <= 1) return '';
 
   const pages = [];
 
-  // Previous button
   pages.push(`
     <button class="page-btn nav-btn prev" ${currentPage === 1 ? 'disabled' : ''} data-page="prev">
       <svg width="20" height="20">
@@ -163,10 +147,8 @@ export function createPaginationHTML(currentPage, totalPages) {
     </button>
   `);
 
-  // Page numbers
   pages.push(generatePageNumbers(currentPage, totalPages));
 
-  // Next button
   pages.push(`
     <button class="page-btn nav-btn next" ${currentPage === totalPages ? 'disabled' : ''} data-page="next">
       <svg width="20" height="20">
