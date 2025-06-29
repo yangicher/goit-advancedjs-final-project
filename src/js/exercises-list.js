@@ -28,7 +28,7 @@ export class ExercisesList {
       <div class="exercise-item ${this.customClass}" data-exercise-id="${exercise._id || exercise.id}">
         <div class="exercise-top-row">
           <div class="workout-rating-left">
-            <div class="workout-badge">WORKOUT</div>
+            <div class="workout-badge">${exercise.equipment ? exercise.equipment.toUpperCase() : 'WORKOUT'}</div>
             ${this.showRating ? ratingHtml : removeBtn}
           </div>
           <button class="start-btn" data-exercise-id="${exercise._id || exercise.id}">
