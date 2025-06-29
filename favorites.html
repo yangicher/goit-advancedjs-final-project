@@ -138,38 +138,13 @@
 </div>
 
 
-    <div class="exercises-page">
+    <section class="favorites-section">
   <div class="container">
-    <div class="exercises-header">
-      <div class="title-section">
-        <h1 class="title">Exercises</h1>
-        <span id="breadcrumb" class="breadcrumb" style="display: none;"></span>
-      </div>
-      <div class="header-controls">
-        <div class="search-section" id="search-section" style="display: none;">
-          <div class="search-input-wrapper">
-            <div class="search-icon">
-              <svg width="18" height="18">
-                <use href="/goit-advancedjs-final-project/assets/icons-W9o0_s8T.svg#icon-search"></use>
-              </svg>
-            </div>
-            <input type="text" class="search-input" placeholder="Search..." />
-            <button class="search-clear-btn" id="search-clear-btn" style="display: none;">
-              <svg width="18" height="18">
-                <use href="/goit-advancedjs-final-project/assets/icons-W9o0_s8T.svg#icon-clear-search"></use>
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="exercises-tabs">
-          <button class="tab active" data-tab="muscles">Muscles</button>
-          <button class="tab" data-tab="body-parts">Body parts</button>
-          <button class="tab" data-tab="equipment">Equipment</button>
-        </div>
-      </div>
-    </div>
-    <div class="exercises-content">
-      <div class="exercises-sidebar">
+    <h1 class="title">Favorites</h1>
+
+    <div class="favorites-layout">
+
+      <div class="left-column">
         <div class="quote">
   <div class="quote-cards-wrapper">
     <div class="quote-card">
@@ -233,20 +208,18 @@
 </div>
 
       </div>
-      <div class="exercises-main">
-        <div id="muscles-grid" class="muscles-grid"></div>
+
+
+      <div class="right-column">
+        <div class="favorites-scroll-wrapper">
+          <div class="favorites-list" id="favoritesList">
+
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
-</div>
-
-    <footer class="section footer" id="footer">
-    <div class="container dark">
-
-    </div>
-</footer>
-
+</section>
     <div id="modal-root"></div>
     <button id="scrollTopButton" title="Go to top">
   <svg
