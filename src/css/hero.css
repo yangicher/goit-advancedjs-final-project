@@ -1,4 +1,3 @@
-/* Основна обгортка */
 .hero {
     display: flex;
     flex-direction: column;
@@ -8,7 +7,6 @@
     box-sizing: border-box;
 }
 
-/* Верхня частина hero */
 .hero-top {
     display: flex;
     flex-direction: column;
@@ -18,7 +16,6 @@
     max-width: 375px;
 }
 
-/* Обгортка для іконки та заголовку */
 .hero-icon-title {
     width: 100%;
     display: flex;
@@ -26,7 +23,6 @@
     gap: 12px;
 }
 
-/* Заголовок */
 .hero-title {
     font-family: 'DM Sans', sans-serif;
     font-weight: 400;
@@ -37,7 +33,6 @@
     margin: 0;
 }
 
-/* Іконка */
 .hero-icon {
     width: 38px;
     height: 38px;
@@ -46,13 +41,11 @@
     vertical-align: middle;
 }
 
-/* Стилізація слова Body */
 .hero-title .italic {
     font-style: italic !important;
     font-weight: 400;
 }
 
-/* Підзаголовок */
 .hero-subtitle {
     margin-top: 12px;
     margin-bottom: 32px;
@@ -65,7 +58,6 @@
     width: 100%;
 }
 
-/* Додаткове зображення + теги */
 .hero-side {
     display: flex;
     flex-direction: column;
@@ -74,15 +66,14 @@
     margin-left: 0;
 }
 
-/* Ховаємо додаткове зображення на моб і планшетах */
 .hero-side picture {
     display: none;
 }
 
-/* Список тегів */
 .hero-tags {
-    display: flex;
+    display: inline-flex;
     flex-wrap: nowrap;
+    white-space: nowrap;
     justify-content: center;
     gap: 8px;
     list-style: none;
@@ -115,7 +106,6 @@
     box-sizing: border-box;
 }
 
-/* Головне зображення */
 .hero-image {
     display: block;
     max-width: 100%;
@@ -124,14 +114,30 @@
     order: 1;
 }
 
-/* Нижнє зображення */
 .hero-bottom-image {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-/* === TABLET & DESKTOP (від 768px) === */
+@media screen and (max-width: 767px) {
+    .hero-tags {
+        display: inline-flex;
+        justify-content: center;
+        white-space: nowrap;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 0 12px;
+        margin: 20px 0 40px 0;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .hero-tags::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 @media screen and (min-width: 768px) {
     .hero-content {
         display: flex;
@@ -194,7 +200,12 @@
     }
 }
 
-/* === DESKTOP LARGE (від 1440px) === */
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    .hero-tags {
+        justify-content: flex-end;
+    }
+}
+
 @media screen and (min-width: 1440px) {
     .hero {
         flex-direction: column;

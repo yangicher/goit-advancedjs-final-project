@@ -1,1 +1,75 @@
-<section class="hero container" id="heroContainer"></section>
+<section class="hero container" id="heroContainer">
+  <div class="hero-top">
+    <div class="hero-content">
+      <div class="hero-icon-title">
+        <h1 class="hero-title">
+          <svg class="hero-icon" width="38" height="38">
+            <use href="./img/icons.svg#icon-sun"></use>
+          </svg>
+          Get <span class="italic">Body</span> in<br />
+          shape, Stay healthy
+        </h1>
+      </div>
+      <p class="hero-subtitle">
+        Transform your physique and embrace a healthier lifestyle with our
+        comprehensive fitness and nutrition support.
+      </p>
+    </div>
+
+    <div class="hero-side">
+      <picture>
+        <source
+          srcset="
+            ./img/hero/hero-side@1x.webp 1x,
+            ./img/hero/hero-side@2x.webp 2x
+          "
+          type="image/webp"
+        />
+        <img
+          src="./img/hero/hero-side@1x.webp"
+          alt="Athletic person in motion"
+          class="hero-side-image"
+        />
+      </picture>
+    </div>
+  </div>
+
+  <div class="hero-bottom-image">
+    <picture>
+      <source
+        srcset="
+          ./img/hero/hero-1440@1x.webp 1x,
+          ./img/hero/hero-1440@2x.webp 2x
+        "
+        media="(min-width: 1440px)"
+        type="image/webp"
+      />
+      <source
+        srcset="./img/hero/hero-768@1x.webp 1x, ./img/hero/hero-768@2x.webp 2x"
+        media="(min-width: 768px)"
+        type="image/webp"
+      />
+      <source
+        srcset="./img/hero/hero-375@1x.webp 1x, ./img/hero/hero-375@2x.webp 2x"
+        type="image/webp"
+      />
+      <img
+        src="./img/hero/hero-375@1x.webp"
+        srcset="./img/hero/hero-375@2x.webp 2x"
+        alt="Solar panels on a rooftop"
+        class="hero-image"
+      />
+    </picture>
+  </div>
+
+  <div class="hero-tags" id="heroTags">
+    <div class="hero-tags-row">
+      <a href="#">#Sport</a>
+      <a href="#">#Healthy</a>
+    </div>
+    <div class="hero-tags-row">
+      <a href="#">#Workout</a>
+      <a href="#">#Diet</a>
+    </div>
+  </div>
+</section>
