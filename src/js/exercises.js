@@ -1,4 +1,6 @@
 import { get } from './api';
+import Modal from './modal';
+import { ExercisesList, createPaginationHTML } from './exercises-list';
 
 // ===============================================
 // CONSTANTS & CONFIGURATION
@@ -37,6 +39,7 @@ class ExercisesState {
     this.selectedBodyPart = '';
     this.allExercises = [];
     this.filteredExercises = [];
+    this.exercisesMap = new Map();
     this.currentHeight = 0;
     this.searchTimeout = null;
   }
@@ -46,6 +49,7 @@ class ExercisesState {
     this.totalPages = 1;
     this.allExercises = [];
     this.filteredExercises = [];
+    this.exercisesMap.clear();
     this.selectedBodyPart = '';
     this.clearSearchTimeout();
   }
@@ -156,87 +160,6 @@ class Templates {
     `;
   }
 
-  static exerciseCard(exercise) {
-    return `
-      <div class="exercise-item">
-        <div class="exercise-top-row">
-          <div class="workout-rating-left">
-            <div class="workout-badge">WORKOUT</div>
-            <div class="rating">
-              ${exercise.rating} <span class="star"><img src="/img/icons/star.svg" alt="star" /></span>
-            </div>
-          </div>
-          <button class="start-btn">Start <span class="arrow"><img src="/img/icons/start-arrow.svg" alt="Start" /></span></button>
-        </div>
-        <div class="exercise-middle-row">
-          <div class="exercise-icon"><img src="/img/icons/exercise-icon.svg" /></div>
-          <h3 class="exercise-title">${exercise.name}</h3>
-        </div>
-        <div class="exercise-bottom-row">
-          <span><span class="meta-label">Burned calories:</span> <span class="meta-value">${exercise.burnedCalories}</span></span>
-          <span><span class="meta-label">Body part:</span> <span class="meta-value">${exercise.bodyPart}</span></span>
-          <span><span class="meta-label">Target:</span> <span class="meta-value">${exercise.target}</span></span>
-        </div>
-      </div>
-    `;
-  }
-
-  static pagination(currentPage, totalPages) {
-    if (totalPages <= 1) return '';
-
-    const pages = [];
-
-    // Previous button
-    pages.push(`
-      <button class="page-btn nav-btn prev" ${currentPage === 1 ? 'disabled' : ''} data-page="prev"></button>
-    `);
-
-    // Page numbers
-    pages.push(Templates.generatePageNumbers(currentPage, totalPages));
-
-    // Next button
-    pages.push(`
-      <button class="page-btn nav-btn next" ${currentPage === totalPages ? 'disabled' : ''} data-page="next"></button>
-    `);
-
-    return `<div class="muscles-pagination">${pages.join('')}</div>`;
-  }
-
-  static generatePageNumbers(current, total) {
-    const pages = [];
-
-    if (total <= 5) {
-      for (let i = 1; i <= total; i++) {
-        pages.push(`<button class="page-btn ${i === current ? 'active' : ''}" data-page="${i}">${i}</button>`);
-      }
-    } else {
-      pages.push(`<button class="page-btn ${1 === current ? 'active' : ''}" data-page="1">1</button>`);
-
-      if (current > 3) {
-        pages.push('<span class="page-dots">...</span>');
-      }
-
-      const start = Math.max(2, current - 1);
-      const end = Math.min(total - 1, current + 1);
-
-      for (let i = start; i <= end; i++) {
-        if (i !== 1 && i !== total) {
-          pages.push(`<button class="page-btn ${i === current ? 'active' : ''}" data-page="${i}">${i}</button>`);
-        }
-      }
-
-      if (current < total - 2) {
-        pages.push('<span class="page-dots">...</span>');
-      }
-
-      if (total > 1) {
-        pages.push(`<button class="page-btn ${total === current ? 'active' : ''}" data-page="${total}">${total}</button>`);
-      }
-    }
-
-    return pages.join('');
-  }
-
   static loadingTemplate(height) {
     return `<div class="loading" style="height: ${height - 80}px;">Loading...</div>`;
   }
@@ -262,10 +185,11 @@ class ExercisesManager {
   constructor() {
     this.state = new ExercisesState();
     this.elements = this.initializeElements();
+    this.modal = new Modal();
+    this.exercisesList = null;
 
     // Don't continue if essential elements are missing
     if (!this.elements) {
-      console.error('Failed to initialize ExercisesManager: required DOM elements not found');
       return;
     }
 
@@ -283,7 +207,6 @@ class ExercisesManager {
 
     // Check if essential elements exist
     if (!elements.musclesGrid || !elements.searchSection) {
-      console.error('Essential DOM elements not found for exercises functionality');
       return null;
     }
 
@@ -296,6 +219,7 @@ class ExercisesManager {
   setupEventListeners() {
     this.setupTabListeners();
     this.setupSearchListeners();
+    this.setupExerciseClickListeners();
   }
 
   setupTabListeners() {
@@ -308,6 +232,32 @@ class ExercisesManager {
     this.elements.searchInput.addEventListener('input', (e) => this.handleSearchInput(e));
     this.elements.searchInput.addEventListener('keydown', (e) => this.handleSearchKeydown(e));
     this.elements.searchClearBtn.addEventListener('click', (e) => this.handleSearchClear(e));
+  }
+
+  setupExerciseClickListeners() {
+    this.elements.musclesGrid.addEventListener('click', (e) => {
+      const filterCard = e.target.closest('.muscle-card');
+      if (filterCard) {
+        const filterName = filterCard.dataset.filter;
+        const filterType = filterCard.dataset.filterType;
+        this.renderExercisesList(filterName, filterType, '', 1);
+        return;
+      }
+
+      const backBtn = e.target.closest('.back-btn');
+      if (backBtn) {
+        this.state.reset();
+        this.clearSearchInput();
+        this.renderFilters(this.state.currentFilter, 1);
+        return;
+      }
+
+      const pageBtn = e.target.closest('.page-btn');
+      if (pageBtn) {
+        this.handlePagination(pageBtn, this.state.selectedBodyPart ? 'exercises' : 'filters');
+        return;
+      }
+    });
   }
 
   // ===============================================
@@ -329,11 +279,10 @@ class ExercisesManager {
       }
 
       const content = this.buildFiltersContent(data.results);
-      const paginationHTML = Templates.pagination(page, this.state.totalPages);
+      const paginationHTML = createPaginationHTML(page, this.state.totalPages);
       const fullContent = Templates.contentWrapper(content, paginationHTML);
 
       this.updateContainerWithAnimation(fullContent);
-      this.attachFilterEventListeners();
 
     } catch (error) {
       this.showError('Failed to load data.');
@@ -360,12 +309,46 @@ class ExercisesManager {
         return;
       }
 
-      const content = this.buildExercisesContent(filteredExercises, filterName);
-      const paginationHTML = searchTerm ? '' : Templates.pagination(page, this.state.totalPages);
-      const fullContent = Templates.contentWrapper(content, paginationHTML);
+      // Build complete content with back button first
+      const backButton = `<button class="back-btn"><span class="arrow">←</span> Back to ${this.state.currentFilter}</button>`;
+      const paginationHTML = searchTerm ? '' : createPaginationHTML(page, this.state.totalPages);
 
+      // Create the wrapper structure
+      const fullContent = `
+        <div class="content-wrapper">
+          <div class="content-area">
+            <div class="exercises-list-container"></div>
+            ${backButton}
+          </div>
+          ${paginationHTML ? `<div class="pagination-area">${paginationHTML}</div>` : ''}
+        </div>
+      `;
+
+      // Update container with the structure
       this.updateContainerWithAnimation(fullContent);
-      this.attachExercisesEventListeners(searchTerm);
+
+      // Now find the exercises list container and initialize the component
+      const exercisesListContainer = this.elements.musclesGrid.querySelector('.exercises-list-container');
+
+      // Initialize ExercisesList component with the actual DOM element
+      this.exercisesList = new ExercisesList({
+        container: exercisesListContainer,
+        showRating: true,
+        showRemoveBtn: false,
+        onStartClick: (exerciseId) => {
+          console.log('onStartClick called with ID:', exerciseId);
+          const exercise = this.state.exercisesMap.get(exerciseId);
+          console.log('Exercise found:', exercise);
+          if (exercise) {
+            this.modal.showModal(exercise);
+          } else {
+            console.error('Exercise not found in exercisesMap for ID:', exerciseId);
+          }
+        }
+      });
+
+      // Render exercises - this will also attach event listeners
+      this.exercisesList.render(filteredExercises);
 
     } catch (error) {
       this.showError('Failed to load exercises.');
@@ -380,12 +363,6 @@ class ExercisesManager {
     return `<div class="muscles-cards-wrapper">${cardsHTML}</div>`;
   }
 
-  buildExercisesContent(exercises, filterName) {
-    const exercisesHTML = exercises.map(exercise => Templates.exerciseCard(exercise)).join('');
-    const backButton = `<button class="back-btn"><span class="arrow">←</span> Back to ${this.state.currentFilter}</button>`;
-    return `<div class="exercises-list">${exercisesHTML}</div>${backButton}`;
-  }
-
   // ===============================================
   // STATE UPDATE METHODS
   // ===============================================
@@ -398,6 +375,11 @@ class ExercisesManager {
     this.state.allExercises = data.results || [];
     this.state.totalPages = data.totalPages || 1;
     this.state.selectedBodyPart = filterName;
+
+    this.state.exercisesMap.clear();
+    this.state.allExercises.forEach(exercise => {
+      this.state.exercisesMap.set(exercise._id, exercise);
+    });
   }
 
   filterExercises(searchTerm) {
@@ -450,7 +432,6 @@ class ExercisesManager {
     const message = `No exercises found${searchTerm ? ` matching "${searchTerm}"` : ''}.`;
     const backButton = `<button class="back-btn"><span class="arrow">←</span> Back to ${this.state.currentFilter}</button>`;
     DOMUtils.setContent(this.elements.musclesGrid, Templates.errorTemplate(message) + backButton);
-    this.attachBackButtonListener();
   }
 
   // ===============================================
@@ -523,48 +504,6 @@ class ExercisesManager {
   updateSearchClearButton() {
     const hasValue = this.elements.searchInput.value.trim().length > 0;
     this.elements.searchClearBtn.style.display = hasValue ? 'flex' : 'none';
-  }
-
-  // ===============================================
-  // EVENT LISTENER ATTACHMENTS
-  // ===============================================
-  attachFilterEventListeners() {
-    this.attachFilterCardListeners();
-    this.attachPaginationListeners('filters');
-  }
-
-  attachExercisesEventListeners(searchTerm) {
-    this.attachBackButtonListener();
-    if (!searchTerm) {
-      this.attachPaginationListeners('exercises');
-    }
-  }
-
-  attachFilterCardListeners() {
-    this.elements.musclesGrid.querySelectorAll('.muscle-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const filterName = card.dataset.filter;
-        const filterType = card.dataset.filterType;
-        this.renderExercisesList(filterName, filterType, '', 1);
-      });
-    });
-  }
-
-  attachBackButtonListener() {
-    const backBtn = this.elements.musclesGrid.querySelector('.back-btn');
-    if (backBtn) {
-      backBtn.addEventListener('click', () => {
-        this.state.reset();
-        this.clearSearchInput();
-        this.renderFilters(this.state.currentFilter, 1);
-      });
-    }
-  }
-
-  attachPaginationListeners(type) {
-    this.elements.musclesGrid.querySelectorAll('.page-btn').forEach(btn => {
-      btn.addEventListener('click', () => this.handlePagination(btn, type));
-    });
   }
 
   handlePagination(btn, type) {

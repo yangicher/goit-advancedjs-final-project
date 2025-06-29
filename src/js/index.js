@@ -5,5 +5,5 @@ import './exercises';
 import './scroll-to-top.js'
 import './header.js'
 import './quote.js';
-import './loader_favorites.js';
+import './hero.js';
 import './favorites.js';

@@ -1,31 +1,22 @@
 .soc-items {
   display: flex;
   gap: 12px;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
 }
 
-.soc-item {
+.soc-icon {
+  fill: var(--primary-color);
   opacity: 0.8;
-  gap: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
+  padding: 8px;
   border-radius: 10px;
   border: 1px solid rgba(36, 36, 36, 0.1);
 }
 
-.soc-item:hover,
-.soc-item:active {
-  /* fill: ; */
-  background: rgba(36, 36, 36, 0.8);
-}
-
-.soc-link .icon {
-  fill: var(--color-black);
-}
-
-.soc-item:hover .icon,
-.soc-item:hover .icon {
+.soc-icon:hover,
+.soc-icon:active {
   fill: var(--color-white);
+  background: rgba(36, 36, 36, 0.8);
+  transition: all 0.5s ease;
 }

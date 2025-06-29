@@ -1,6 +1,8 @@
-let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-const container = document.getElementById('favoritesList');
+import { ExercisesList } from './exercises-list';
+import Modal from './modal';
+import { get } from './api';
 
+<<<<<<< HEAD
 
 container.innerHTML = '';
 
@@ -69,6 +71,60 @@ container.addEventListener('click', e => {
 });
 
 
+=======
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  initializeFavorites();
+  checkAndUpdateData();
+});
+
+function initializeFavorites() {
+  // Initialize favorites from localStorage
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const container = document.getElementById('favoritesList');
+
+  if (!container) {
+    return;
+  }
+
+  const modal = new Modal();
+
+  // Initialize ExercisesList component for favorites
+  const exercisesList = new ExercisesList({
+    container: container,
+    showRating: false,
+    showRemoveBtn: true,
+    onStartClick: (exerciseId) => {
+      console.log('Favorites onStartClick called with ID:', exerciseId); // Debug log
+      const exercise = favorites.find(ex => (ex._id || ex.id) === exerciseId);
+      console.log('Exercise found in favorites:', exercise); // Debug log
+      if (exercise) {
+        modal.showModal(exercise);
+      } else {
+        console.error('Exercise not found in favorites for ID:', exerciseId);
+      }
+    },
+    onRemoveClick: (exerciseId) => {
+      removeFromFavorites(exerciseId, exercisesList);
+    }
+  });
+
+  // Render initial favorites
+  exercisesList.render(favorites);
+}
+
+// === Remove exercise from favorites ===
+function removeFromFavorites(id, exercisesList) {
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  favorites = favorites.filter(ex => (ex._id || ex.id) !== id);
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+
+  // Use the component's method to remove the exercise
+  exercisesList.removeExercise(id);
+}
+
+// === Export function to get favorites ===
+>>>>>>> main
 export const getFavorites = () => {
   const stored = localStorage.getItem('favorites');
   try {
@@ -79,30 +135,7 @@ export const getFavorites = () => {
   }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import { get } from './api';
-
-window.addEventListener('DOMContentLoaded', async () => {
-  await checkAndUpdateData();
-});
-
+// === Quote functionality ===
 async function checkAndUpdateData() {
   const stored = localStorage.getItem('quoteData');
   const today = new Date().toISOString().slice(0, 10);
