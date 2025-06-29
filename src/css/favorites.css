@@ -251,41 +251,11 @@ h1 {
     border-radius: 20px;
   }
 
-<<<<<<< HEAD
-  .info-image {
-    background-image: image-set(
-      url('../img/quote/quote-fav-tab@1x.webp') 1x,
-      url('../img/quote/quote-fav-tab@2x.webp') 2x,
-      url('../img/quote/quote-fav-tab@3x.webp') 3x
-    );
-    background-size: cover;
-    background-position: center;
-    width: 45%;
-    border-radius: 20px;
-  }
-
-.info-block{
-=======
   .info-block {
->>>>>>> main
     width: 47%;
   }
 }
 
-<<<<<<< HEAD
-.no-favorites-msg {
-    color: #666;
-    font-size: 16px;
-    padding: 2px;
-    padding-right: 60px;
-}
-
-}
-
-
-
-=======
->>>>>>> main
 @media screen and (max-width: 680px) {
   .info-row {
     display: table-column;
@@ -297,43 +267,12 @@ h1 {
     width: 100%;
   }
 
-<<<<<<< HEAD
-
-
-
-        .info-block {
-        width: 100%;
-        }
-
-
-  .info-image {
-    background-image: image-set(
-      url('../img/quote/quote-fav-mob@1x.webp') 1x,
-      url('../img/quote/quote-fav-mob@2x.webp') 2x,
-      url('../img/quote/quote-fav-mob@3x.webp') 3x
-    );
-=======
   .info-image {
     background-image: url(/img/quote/quote-fav-mob@1x.webp);
->>>>>>> main
     background-size: cover;
     background-position: center;
     width: 100%;
     border-radius: 20px;
     margin-top: 20px;
   }
-<<<<<<< HEAD
-
-
-
-
-  .no-favorites-msg {
-    text-align: center;
-    width: 554px;
-    margin-left: 40px;
-    margin-top: 100px;
 }
-  }
-=======
-}
->>>>>>> main
