@@ -12,7 +12,7 @@
   max-width: 444px;
   flex-shrink: 0;
   border-radius: 20px;
-  background: #242424;
+  background: var(--color-black);
   padding: 20px;
 }
 .quote-day-wrap {
@@ -96,7 +96,7 @@
 }
 
 .news-title-time {
-  color: #242424;
+  color: var(--color-black);
   font-feature-settings: 'liga' off, 'clig' off;
   font-family: 'DM Sans';
   font-size: 20px;
@@ -116,7 +116,7 @@
 }
 .news-recommends {
   max-height: 90px;
-  color: #242424;
+  color: var(--color-black);
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-style: normal;

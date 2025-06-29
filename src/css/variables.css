@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #242424;
+  --primary-color: var(--color-black);
 
   --color-black: #121417;
   --color-white: #f4f4f4;
