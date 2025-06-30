@@ -83,7 +83,14 @@ export default class RatingModal {
             </div>
             <form id="rating-form">
               <label>
-                <input required type="email" name="email" id="email" placeholder="Email" autocomplete="email" pattern="^\w+(.\w+)?@[a-zA-Z_]+?.[a-zA-Z]{2,3}$)" />
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                    autocomplete="email"
+                  />
               </label>
               <label>
                 <textarea required name="comment" id="comment" placeholder="Your comment" rows="4"></textarea>
