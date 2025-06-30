@@ -1,4 +1,3 @@
-import './loader';
 import './api';
 import './footer.js';
 import './exercises';
