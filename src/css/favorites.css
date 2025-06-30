@@ -217,7 +217,7 @@ h1 {
   border-radius: 20px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .favorites-layout {
     flex-direction: column;
   }

@@ -5,7 +5,7 @@ import { get } from './api';
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   initializeFavorites();
-  checkAndUpdateData();
+  // checkAndUpdateData();
 });
 
 function initializeFavorites() {
@@ -65,43 +65,43 @@ export const getFavorites = () => {
 };
 
 // === Quote functionality ===
-async function checkAndUpdateData() {
-  const stored = localStorage.getItem('quoteData');
-  const today = new Date().toISOString().slice(0, 10);
+// async function checkAndUpdateData() {
+//   const stored = localStorage.getItem('quoteData');
+//   const today = new Date().toISOString().slice(0, 10);
 
-  if (stored) {
-    const data = JSON.parse(stored);
-    if (data.date === today) {
-      updateHTML(data);
-      return;
-    }
-  }
+//   if (stored) {
+//     const data = JSON.parse(stored);
+//     if (data.date === today) {
+//       updateHTML(data);
+//       return;
+//     }
+//   }
 
-  try {
-    const data = await get('quote');
+//   try {
+//     const data = await get('quote');
 
-    const dataToStore = {
-      date: today,
-      author: data.author,
-      quote: data.quote,
-    };
+//     const dataToStore = {
+//       date: today,
+//       author: data.author,
+//       quote: data.quote,
+//     };
 
-    localStorage.setItem('quoteData', JSON.stringify(dataToStore));
-    updateHTML(dataToStore);
-  } catch (error) {
-    console.error('Не вдалося отримати цитату:', error);
-  }
-}
+//     localStorage.setItem('quoteData', JSON.stringify(dataToStore));
+//     updateHTML(dataToStore);
+//   } catch (error) {
+//     console.error('Не вдалося отримати цитату:', error);
+//   }
+// }
 
-function updateHTML(data) {
-  const quoteElem = document.querySelector('.js-quote');
-  const authorElem = document.querySelector('.js-author');
+// function updateHTML(data) {
+//   const quoteElem = document.querySelector('.js-quote');
+//   const authorElem = document.querySelector('.js-author');
 
-  if (!data || !quoteElem || !authorElem) {
-    console.warn('Не знайдено елементи для вставки цитати');
-    return;
-  }
+//   if (!data || !quoteElem || !authorElem) {
+//     console.warn('Не знайдено елементи для вставки цитати');
+//     return;
+//   }
 
-  quoteElem.textContent = data.quote;
-  authorElem.textContent = data.author;
-}
+//   quoteElem.textContent = data.quote;
+//   authorElem.textContent = data.author;
+// }

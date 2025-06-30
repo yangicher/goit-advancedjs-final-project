@@ -2,17 +2,18 @@
   background-color: #f4f4f4;
 }
 .quote-cards-wrapper {
-  max-width: 444px;
+  max-width: 335px;
   margin: 0 auto;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 .quote-card {
-  max-width: 444px;
+  max-width: 335px;
   flex-shrink: 0;
   border-radius: 20px;
-  background: var(--color-black);
+  background: #242424;
   padding: 20px;
 }
 .quote-day-wrap {
@@ -34,7 +35,7 @@
   width: 100%;
 }
 .quote-icon-run {
-  fill: #f4f4f4;
+  color: #f4f4f4;
 }
 
 .quote-title {
@@ -72,7 +73,7 @@
 }
 
 .quote-img-wrap {
-  max-width: 444px;
+  max-width: 335px;
 }
 .quote-img {
   display: flex;
@@ -96,7 +97,7 @@
 }
 
 .news-title-time {
-  color: var(--color-black);
+  color: #242424;
   font-feature-settings: 'liga' off, 'clig' off;
   font-family: 'DM Sans';
   font-size: 20px;
@@ -116,7 +117,7 @@
 }
 .news-recommends {
   max-height: 90px;
-  color: var(--color-black);
+  color: #242424;
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -134,9 +135,9 @@
   margin-right: 18px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1439px) {
   .quote-cards-wrapper {
-    max-width: 100%;
+    max-width: 704px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: left;
@@ -157,7 +158,6 @@
 
   .quote-img-wrap {
     width: 288px;
-    max-width: 100%;
   }
   .quote-news {
     max-width: 400px;
@@ -211,7 +211,6 @@
   .quote-img-wrap,
   .quote-news {
     max-width: 444px;
-    width: 100%;
   }
   .news-recommends {
     max-width: 314px;
