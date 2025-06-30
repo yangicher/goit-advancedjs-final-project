@@ -217,7 +217,7 @@ h1 {
   border-radius: 20px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1440px) {
   .favorites-layout {
     flex-direction: column;
   }
@@ -294,11 +294,31 @@ h1 {
 
 }
 
+
+.no-favorites-msg {
+
+     width: auto; 
+     margin-left: auto; 
+         margin-top: auto;
+
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+}
+
+@media screen and (min-width: 768px) and (max-width: 1440px) {
 #favoritesList {
     grid-template-columns: repeat(2, 333px);
 
 }
+
+.no-favorites-msg {
+
+    margin-left: 72px;
+
+}
+
+
+
+
+
 }
