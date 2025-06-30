@@ -21,8 +21,8 @@
 
     <title>Your Energy</title>
     <script type="module" crossorigin src="/goit-advancedjs-final-project/assets/vendor-DDD7fsZd.js"></script>
-    <script type="module" crossorigin src="/goit-advancedjs-final-project/assets/index-C0YOmegj.js"></script>
-    <link rel="stylesheet" crossorigin href="/goit-advancedjs-final-project/assets/index-CoMOnhOr.css">
+    <script type="module" crossorigin src="/goit-advancedjs-final-project/assets/index-BMjzjYxb.js"></script>
+    <link rel="stylesheet" crossorigin href="/goit-advancedjs-final-project/assets/index-BL4tUaiq.css">
   </head>
   <body>
     <header class="section header" id="header">
@@ -145,64 +145,60 @@
     <div class="favorites-layout">
 
       <div class="left-column">
-        <div class="quote">
-  <div class="quote-cards-wrapper">
-    <div class="quote-card">
-      <div class="qoute-wrap">
-        <div class="icon-wrap">
-          <svg class="quote-icon-run" width="20" height="20">
+        <div class="Fquote" id="quote">
+  <div class="Fquote-cards-wrapper" id="quote-cards-wrapper">
+    <div class="Fquote-card" id="quote-card">
+      <div class="Fqoute-wrap" id="qoute-wrap">
+        <div class="Ficon-wrap" id="icon-wrap">
+          <svg class="Fquote-icon-run" width="20" height="20">
             <use href="/goit-advancedjs-final-project/assets/icons-W9o0_s8T.svg#icon-run"></use>
           </svg>
         </div>
-        <div class="quote-day-wrap">
-          <div class="quote-title">
-            <p class="quote-day-title">Quote of the day</p>
-            <svg class="" width="20" height="20">
+        <div class="Fquote-day-wrap" id="quote-day-wrap">
+          <div class="Fquote-title" id="quote-title">
+            <p class="Fquote-day-title" id="quote-day-title">Quote of the day</p>
+            <svg width="20" height="20">
               <use href="/goit-advancedjs-final-project/assets/icons-W9o0_s8T.svg#icon-quote"></use>
             </svg>
           </div>
-          <p class="quote-day js-quote"></p>
-          <p class="qoute-author js-author"></p>
+          <p class="Fquote-day js-quote" id="quote-day">…тут текст цитати…</p>
+          <p class="Fqoute-author js-author" id="qoute-author">— Автор</p>
         </div>
       </div>
     </div>
-    <div class="quote-img-wrap">
+<div class="Fline">
+    <div class="Fquote-news" id="quote-news">
+      <div class="Fnews-title-wrap" id="news-title-wrap">
+        <svg class="Ficon-news" width="32" height="32">
+          <use href="/goit-advancedjs-final-project/assets/icons-W9o0_s8T.svg#icon-dailynorm"></use>
+        </svg>
+        <div class="Fnews-title" id="news-title">
+          <p class="Fnews-title-time" id="news-title-time">110 min</p>
+          <p class="Fnews-title-norm" id="news-title-norm">Daily norm of sports</p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="Fquote-img-wrap" id="quote-img-wrap">
       <picture>
         <source
           media="(min-width: 1440px)"
-          srcset="/img/quote/quote-home-desk.webp, /goit-advancedjs-final-project/assets/quote-home-desk@2x-RwxHZAzm.webp 2x, /goit-advancedjs-final-project/assets/quote-home-desk@3x-DlnK9rbs.webp 3x"
+          srcset="data:image/webp;base64,UklGRmwNAABXRUJQVlA4IGANAACwUACdASrvAI0APoU4lkelI6IhM/ZMsKAQiWUIcAGAJwq9vcgv+4xuUGO5xiYOC5iJeT2OdHHpUEO/aJRZmLxHk/sAcqKJM6LOEN0+Yvv47WYPk4imhb0abfpXOTxWoMJVw9yHO+IICFCzuV23G52XQI92VNQovZv93pp/KE1PEBEr6XyE4pr+maTYH72LfN6W5lL4rY1tjMFkEhU0duYRP+6m17XF7TLbeDe86s9rs2wvuKg4pfjEgw1WGG0elA7g28gJI6ilSx/foBHYVc8KoeAaMGfu99HqF9wNKzocYFmyhlknoh1fkqYjh6GcMdajf2NQ/oKzbM/zJUY9qaxWs7V3pgHGXjKz/+6Waa0+2XB0ja2P+wJWtyhV+TTWu/c9rzZV7Kg0N4o/CVRA/xYhE03pR09c+7MRM6rYmGNn557v2JfpjV1ZMI1zro2pPaPrdYWs/eKwG1ABDu1gEOo7+iF3+zTSnNBL+pjXPVJTWwfoPty8jdRuStzr979hhc5ZizZryAtRcb64nKPaa7zn23NrDQAnv3/p7tX3LYwXZkw0XLDzvF2Zol7JcMYhq46FL1/EjHQ2RkZ8aTQ+cO1o8noW2DoTWt2jd6SJudaLZd6MMEKzB+eIKlOOLeXMRVN/M41LSNeRAF2XA9BNh6nyAAPJ8z/91dBmUkW5PH8hjjQp6cMhRLUKp1wzO3t4X8sJnmyg+Cbgn8ucJ2GgwRGR9o4gnGJv2RID3rReOuTPkGyAKLdkLFJF7vdcWICm7FkEtnckfdzcDccXOyAFyewRtnE9mxYsOdr5BZalCZde5Wj3INIR+fjKtXmoGSi/cWhGF4ab1ZOKWKXVvEbEbuIweXzXDBboZ5UJr/vmMEAA/j7ILTsm3w1fe4mk6tkR81SJynrQzzGFF3p/sqH1e2UeyQczr8VJIsu9erFpQkfbtU0qacy4i5V9qWkraSGCmbP8E4gJALCfCutNuKyUpfrYwIgDxevAOWLQsFECgQFJ0oNVwBRAYRq06E1WkCWEgMxhk/acctIwx5OboyXPPYrcFZKdOlin3WwYvqi2lM0+PvLbM6N5MvR3CfSPeWy3JbhuR8dH8peOUEMsy1GJ/2UDymZIMp2jOBtxCp7qcakCtlEwQdzcEz+WrAs6z2BgY9pwE+FvZIkyFhCEABLIv7ovXbBSGImh3ZaXNhm7UVUEWSgahoGztUvje6RCPdkTPqbXe4h4SMPlmggVxCF3h8+8+M5yfcqfmjhwkCgpF2EVV5Hj270fZfwUAM+bI4ZcSrOp2UoEspy3FGjc+WwA9ohJP90L5gkyvf7UoFbe8phvdLBUEKv+fnDMD6XVxwENbpu7FI0gYHc2vM2mal8THE/pJ3gwDq0fzA3cHTgkdpb5mUwewyhgyJm1jhZGJAQzRF+JGdNNvVqiF1AHI1HfXtz9vupT0uHM5MHKe+8UKqG4c9ZAN+8ynmsuGGtpFDKXaHJIWnjSutPz+E4ZPUIZb4vS2ALLDmkilKPqe94FVPAxg2n0R6eFXhSh75YvJVMrz7Abfmzkz0y/8wubvI9TP1QxJLXtgO9DuaVp2WUK+9qquh/3/8T+wWVnndVBjX/6/EebMW45A9gojZ5MYKpTxlPw4AbHHZlNHv/hAqviTWyIGJV8guHhjAgNNbd0VW0qNI4k5kaYerG+iWvG863FS8kUpxTxYzQ4qEKh+Hi4KvdapMnJBw2mUQGsVqYp+h42YgTRuS5PYcPLiOpOkLJu1nTfQ2vdycbRyu8nCOvLXXWwXc9fkOTQi/9AAF4Ai7QXV7BM+BDzesqk5nXce9D/yKAH74B95AKS+mDm6QPrhimvOKc8L2eUzrJYaOutRv4bU5K8voda7FqQ8xe55Mvp8hD4KBC57XuSzcBCS6TwIX0ZJgPFNtfYMrsNPvte3QvSfFkPGSUuUdMrbMOMxqB+H/Xk7L/kGCmyqATTwuUHRQIzUN3BFNpPgY6bosY5lnqMebAkZfnBKIn6pcYYPz9hE9muM8/bjT5yQwDhTkXJFbeso4jcl4VrObakrpCqKbrPApgIYE56upmSPMD3w46zoJlWwdw00Y1sjXBuF/hQmJZw8Jd+Q7indXofUFi6QD5O4DLXAf2M0qHIFlmbel4NODOFKwui4f0EycCUFfft3fiiGKq68pL2kVwrndyiwGAJ2xX4nbW2BjDfUQ9TayqWTAn+7s+TVI0zBm+A9OPwg6Y3d8UILuNxp5XhA26/AbD5Qi8vD2Kimjj0ZKIxSdbp04OmcT2GcY3ugjNL7XKodsKB15oKKnp2aqyyBgedaO1cTrqhhilylar9r9rSnprWgFZFVzPT85mdI0FUl/pAxOjD9HQmKN8eyYZU/fTIz/yHQxE4+ccvIdM77ZJZEg1hp9DUDft2KJuyiFw7fMjYjmDr3zsmfcU2wsj5CrE4ROITzsbZJLn5RRp1gseLbn7OCI6bhNXyFTUmb1RjP5duuDXnFIUptfEzKKK1HhiOGyed5MHnIksgfVmEunm2qEcaf28l/jNa8lbcQk1YA9wY5GDlMMFAAAABs2iRCcrqcmMaptfhfG+F6tB+Gt9TPaT7zxOUxg7OYwc2yTNbfRdszODMl2LaHXPDqeLMxIUeZfI9axPOymUBlfBouDXcXpRHZRkwBR5hY9SzMXzhZthcuA2R0i+hoOtufjwW7UteVX5ug/g047mkpFSe/Zr8EfHGKJ39bbo2n0yNu2YOKtc4Ll+NS/beQv9olMXST1ARe2Iwm9HZAsGSNwhc0hdMqP4Kmeel2c1RYBnlSUSD9+yGCFug3d2yosDue8AKuCYbqdLAWpJIADtdVveArTzf2Bzx9/RazQL7IkmalS+FLmyWi56P+9jMSD7gEI21RBxnsGqNp6actA1awa0wvxU2nl/WfGRsVC7kqy2Qq8NknieyixhUWEHLlVtxeoW3S8TYVvRpXvvmfJXQle7hTPPc/b/yyu3gF7NLOG0nQWs4JRJchzNFWfUokEYfVxUFXRJ90bu2EU0/sUpyYbqVrxANWtz3LwqjUZ8orre/nvPF8B1TlUVaAdvbzfjqYqHZCAZ5dj/WQ8gdYub8bWCDlBRbNydyosREn/Dd61iWP7rYPy9Vj25ziG3XhnLjNzttr5xu2A729Dw5NZkTPmlo//tfsiwtteedrflpMPsoUg9kJOzrdcfqZBcXFikRdlqmcA1KHNvCiifaj53I/9wytvWkHiOzhsP0wyabRVolOYIvCxDseM60y+PV2YgVr7JdrbHHgdw8NRK6SBDY9MWKRpyd4Kn5+FpCXodJN3uKL1ub0w23rtTT+YLimZJJAeYoCg/Px8UTVie8gMTVdsfmkgIYu6Q/V6zQuC9uBPjMuE29sDiRP4eYTTdNrSeRBYLpG5g0+SBijRaOvH7OUnqCbLj73k/VwJfGNvLWeDuji+iXeHLE0tnubvBO1Ol3MYlTG1kIazwXBarnt6ieTbpMGmN6xrhFYOb8sqKQThKw6rm/OzirC/JibccFD0ti7482SXGfaXeSFc0Uu+QPJfupJxj4JfiSl7vhFFH+TGFv567GIoMAlB5GJe+KcME9+I46OVvmK5d/dptWrlzflOZyivSBl7wChj5pAC8TwCDRjQjX341+KNRilpMny6TO9kpW6x8J9/1vgMxenLwTcXUyHNyREKx5wRX5E4h5dwX386ikU7T5Jc2aBt1hNbGaZQpYbQQr5tDw3eZ0raw9jYZ7AnBShCcGvFsRhTjzOWUgXbaXL60cdyqRFHk0D78a7aegvj4lBs0ENNKvO0b5YbsaTpU8iG7w89VQ5RTnyGVpChCWeUQ3nx42nCUROt8sHEgQHiFXRY9HOmP66HJf6uC8zYBDnDkZQkRiS80AAT7Ue53TfQE0VgGGKQHGq5cB6Dxm4WLrMCh+Pig6NAW//H9JMxak9ju66HQnQ0nEFC28Z4vZZKOrbkzn9bDoGmw2KRzMpgoehTUwL/Aj2cBYQ/akxRWinsV3mpeTPorMvwSwABKXsSKncSrkwh2T9dBd/dzJW+ABgg15GZGYrvKdaL8w/JSmb52ZlXYcIV8uCs5+PUGkWEw7RwQUXxmcxeeOPAv5nfMhctDcpU1i3bG4eYExte8qbR4/AVrNgouZDMhifVuMZVTYj3JVT6eYM7MIgMUvZe7E36ym6yBHus49BCAhmkoE+h4XsHfGu2Um4gUcnfo/ZOmBZ4a9WDbLtd+UUQDUmMZA/aZtKloyqKvSjTADEt97qTjGUSQHErn+O2NRJEWakj72+UgvnwT7tE4zyJGe0PZDd95fvuce5OI68TZXSQJ/3sQ20pFnfAlP7qzVvSotafsHeP/0SdGAMpP6NqrX+SxjSTKHbGX7rFI7VUDEHctm3/oChYmfSvScFUeSBbru2KTHd557r5bvxq1cjrTOiE/ZyHLdV4QllNFqTv5PiVmm4w9caucmEPoc69SWARH5A07MVghTrEzsOR+pRRfaByVgAgT8wCm1Z7ojoGqIWl2ZJrCN4ZJfFXcrwkNBPiQIjtt3I8QcynOXdgK+M7wsTibvS32093GXgUO9txAZwKd75SoiaAAA, /goit-advancedjs-final-project/assets/quote-fav-desk@2x-DwC5MUww.webp 2x, /goit-advancedjs-final-project/assets/quote-fav-desk@3x-Dzr-w1O2.webp 3x"
         />
         <source
           media="(min-width: 768px)"
-          srcset="/img/quote/quote-home-tab.webp, /goit-advancedjs-final-project/assets/quote-home-tab@2x-Bsdx5o9M.webp 2x, /goit-advancedjs-final-project/assets/quote-home-tab@3x-DDcaoG7p.webp 3x"
+          srcset="/goit-advancedjs-final-project/assets/quote-fav-tab@1x-Bn_V4GQi.webp, /goit-advancedjs-final-project/assets/quote-fav-tab@2x-wVM8tvEJ.webp 2x, /goit-advancedjs-final-project/assets/quote-fav-tab@3x-DJk8zpIR.webp 3x"
         />
         <img
-          class="quote-img"
-          src="/goit-advancedjs-final-project/assets/quote-home-mob@1x-DJfic5wg.webp"
-          srcset="/goit-advancedjs-final-project/assets/quote-home-mob@2x-D3V4NkRV.webp 2x, /goit-advancedjs-final-project/assets/quote-home-mob@3x-BdgnVCHu.webp 3x"
+          class="Fquote-img"
+          id="quote-img"
+          src="data:image/webp;base64,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"
+          srcset="/goit-advancedjs-final-project/assets/quote-fav-mob@2x-j-fKLCBM.webp 2x, /goit-advancedjs-final-project/assets/quote-fav-mob@3x-kfX5P6sn.webp 3x"
           alt="quote image"
         />
       </picture>
     </div>
-    <div class="quote-news">
-      <div class="news-title-wrap">
-        <svg class="icon-news" width="32" height="32">
-          <use href="/goit-advancedjs-final-project/assets/icons-W9o0_s8T.svg#icon-dailynorm"></use>
-        </svg>
-        <div class="news-title">
-          <p class="news-title-time">110 min</p>
-          <p class="news-title-norm">Daily norm of sports</p>
-          <p class="news-recommends">
-            The World Health Organization recommends at least 150 minutes of
-            moderate-intensity aerobic physical activity throughout the week for
-            adults aged 18-64. However, what happens if we adjust that number to
-            110 minutes every day? While it might seem like a high number to
-            hit, dedicating 110 minutes daily to sporting activities may offer
-            unparalleled benefits to physical health, mental well-being, and
-            overall quality of life.
-          </p>
-        </div>
-      </div>
     </div>
   </div>
 </div>
