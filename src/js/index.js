@@ -1,6 +1,6 @@
 import './loader';
 import './api';
-import './footer/footer';
+import './footer.js';
 import './exercises';
 import './scroll-to-top.js'
 import './header.js'

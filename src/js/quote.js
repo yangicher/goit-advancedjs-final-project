@@ -81,14 +81,14 @@ function generateFavoritesQuoteTemplate(data) {
       <div class="Fqoute-wrap" id="qoute-wrap">
         <div class="Ficon-wrap" id="icon-wrap">
           <svg class="Fquote-icon-run" width="20" height="20">
-            <use href="/img/icons.svg#icon-run"></use>
+            <use href="./img/icons.svg#icon-run"></use>
           </svg>
         </div>
         <div class="Fquote-day-wrap" id="quote-day-wrap">
           <div class="Fquote-title" id="quote-title">
             <p class="Fquote-day-title" id="quote-day-title">Quote of the day</p>
             <svg width="20" height="20">
-              <use href="/img/icons.svg#icon-quote"></use>
+              <use href="./img/icons.svg#icon-quote"></use>
             </svg>
           </div>
           <p class="Fquote-day js-quote" id="quote-day">${data.quote}</p>
@@ -100,7 +100,7 @@ function generateFavoritesQuoteTemplate(data) {
     <div class="Fquote-news" id="quote-news">
       <div class="Fnews-title-wrap" id="news-title-wrap">
         <svg class="Ficon-news" width="32" height="32">
-          <use href="/img/icons.svg#icon-dailynorm"></use>
+          <use href="./img/icons.svg#icon-dailynorm"></use>
         </svg>
         <div class="Fnews-title" id="news-title">
           <p class="Fnews-title-time" id="news-title-time">110 min</p>
@@ -115,26 +115,26 @@ function generateFavoritesQuoteTemplate(data) {
         <source
           media="(min-width: 1440px)"
           srcset="
-            /img/quote/quote-fav-desk@1x.webp,
-            /img/quote/quote-fav-desk@2x.webp 2x,
-            /img/quote/quote-fav-desk@3x.webp 3x
+            ./img/quote/quote-fav-desk@1x.webp,
+            ./img/quote/quote-fav-desk@2x.webp 2x,
+            ./img/quote/quote-fav-desk@3x.webp 3x
           "
         />
         <source
           media="(min-width: 768px)"
           srcset="
-            /img/quote/quote-fav-tab@1x.webp,
-            /img/quote/quote-fav-tab@2x.webp 2x,
-            /img/quote/quote-fav-tab@3x.webp 3x
+            ./img/quote/quote-fav-tab@1x.webp,
+            ./img/quote/quote-fav-tab@2x.webp 2x,
+            ./img/quote/quote-fav-tab@3x.webp 3x
           "
         />
         <img
           class="Fquote-img"
           id="quote-img"
-          src="/img/quote/quote-fav-mob@1x.webp"
+          src="./img/quote/quote-fav-mob@1x.webp"
           srcset="
-            /img/quote/quote-fav-mob@2x.webp 2x,
-            /img/quote/quote-fav-mob@3x.webp 3x
+            ./img/quote/quote-fav-mob@2x.webp 2x,
+            ./img/quote/quote-fav-mob@3x.webp 3x
           "
           alt="quote image"
         />
@@ -153,14 +153,14 @@ function generateQuoteTemplate(data) {
       <div class="qoute-wrap">
         <div class="icon-wrap">
           <svg class="quote-icon-run" width="20" height="20">
-            <use href="/img/icons.svg#icon-run"></use>
+            <use href="./img/icons.svg#icon-run"></use>
           </svg>
         </div>
         <div class="quote-day-wrap">
           <div class="quote-title">
             <p class="quote-day-title">Quote of the day</p>
             <svg width="20" height="20">
-              <use href="/img/icons.svg#icon-quote"></use>
+              <use href="./img/icons.svg#icon-quote"></use>
             </svg>
           </div>
           <p class="quote-day js-quote">${data.quote}</p>
@@ -171,21 +171,21 @@ function generateQuoteTemplate(data) {
     <div class="quote-img-wrap">
       <picture>
         <source media="(min-width: 1440px)" srcset="
-            /img/quote/quote-home-desk.webp,
-            /img/quote/quote-home-desk@2x.webp 2x,
-            /img/quote/quote-home-desk@3x.webp 3x
+            ./img/quote/quote-home-desk.webp,
+            ./img/quote/quote-home-desk@2x.webp 2x,
+            ./img/quote/quote-home-desk@3x.webp 3x
           " />
         <source media="(min-width: 768px)" srcset="
-            /img/quote/quote-home-tab.webp,
-            /img/quote/quote-home-tab@2x.webp 2x,
-            /img/quote/quote-home-tab@3x.webp 3x
+            ./img/quote/quote-home-tab.webp,
+            ./img/quote/quote-home-tab@2x.webp 2x,
+            ./img/quote/quote-home-tab@3x.webp 3x
           " />
         <img
           class="quote-img"
-          src="/img/quote/quote-home-mob@1x.webp"
+          src="./img/quote/quote-home-mob@1x.webp"
           srcset="
-            /img/quote/quote-home-mob@2x.webp 2x,
-            /img/quote/quote-home-mob@3x.webp 3x
+            ./img/quote/quote-home-mob@2x.webp 2x,
+            ./img/quote/quote-home-mob@3x.webp 3x
           "
           alt="quote image"
         />
@@ -194,7 +194,7 @@ function generateQuoteTemplate(data) {
     <div class="quote-news">
       <div class="news-title-wrap">
         <svg class="icon-news" width="32" height="32">
-          <use href="../img/icons.svg#icon-dailynorm"></use>
+          <use href="./img/icons.svg#icon-dailynorm"></use>
         </svg>
         <div class="news-title">
           <p class="news-title-time">110 min</p>
