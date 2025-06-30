@@ -206,7 +206,7 @@
 
 
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (min-width: 768px) and (max-width: 1440px) {
 .Fquote-cards-wrapper {
     max-width: 100%;
 
@@ -219,6 +219,11 @@
     height: 136px;
       width: 49.5%;
 }
+
+
+
+
+
 }
 
 
