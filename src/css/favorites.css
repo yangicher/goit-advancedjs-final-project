@@ -276,3 +276,29 @@ h1 {
     margin-top: 20px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 767px) {
+
+#favoritesList {
+    grid-template-columns: repeat(1, 1fr);
+
+}
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+#favoritesList {
+    grid-template-columns: repeat(2, 333px);
+
+}
+}
