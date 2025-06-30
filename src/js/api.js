@@ -1,33 +1,32 @@
 import axios from 'axios';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 const BASE_URL = 'https://your-energy.b.goit.study/api/';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-export const get = async (path, params) => {
+function showErrorToast(message) {
+  iziToast.show({
+    title: 'Error:',
+    message: message || 'Something went wrong',
+    color: 'red',
+    position: 'topRight',
+  });
+}
+
+async function request(method, path, params) {
   try {
-    const response = await axios.get(`${BASE_URL}${path}`, { params });
+    const url = `${BASE_URL}${path}`;
+    const config = ['get', 'delete'].includes(method) ? { params } : params;
+
+    const response = await axios[method](url, config);
     return response.data;
   } catch (error) {
-    console.error('Error in get:', error);
+    showErrorToast(error?.response?.data?.message || error.message);
     throw error;
   }
-};
+}
 
-export const patch = async (path, params) => {
-  try {
-    const response = await axios.patch(`${BASE_URL}${path}`, params);
-    return response.data;
-  } catch (error) {
-    console.error('Error in patch:', error);
-    throw error;
-  }
-};
-
-export const post = async (path, params) => {
-    try {
-        const res = await axios.post(`${BASE_URL}${path}`, params);
-        return res.data;
-    } catch (error) {
-        console.error('Error in post:', error);
-        return error.response;
-    }
-};
+export const get = (path, params) => request('get', path, params);
+export const post = (path, params) => request('post', path, params);
+export const patch = (path, params) => request('patch', path, params);

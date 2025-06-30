@@ -1,4 +1,5 @@
 import { patch } from './api';
+import iziToast from 'izitoast';
 
 export default class RatingModal {
   constructor(rootSelector = '#modal-root') {
@@ -144,12 +145,14 @@ export default class RatingModal {
         email,
         review: comment,
       });
-
+      iziToast.show({
+        title: 'Rating:',
+        color: 'green',
+        position: 'topRight',
+        message: `You've given ${this.#selectedRating} stars!`,
+      });
       this.hideModal();
-    } catch (err) {
-      console.error('Rating submit failed:', err);
-      alert('Failed to submit rating. Please try again later.');
-    }
+    } catch (err) {}
   };
 
   #initStarsListeners() {
