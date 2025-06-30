@@ -336,9 +336,7 @@ class ExercisesManager {
         showRating: true,
         showRemoveBtn: false,
         onStartClick: (exerciseId) => {
-          console.log('onStartClick called with ID:', exerciseId);
           const exercise = this.state.exercisesMap.get(exerciseId);
-          console.log('Exercise found:', exercise);
           if (exercise) {
             this.modal.showModal(exercise);
           } else {

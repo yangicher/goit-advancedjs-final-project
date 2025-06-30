@@ -25,9 +25,7 @@ function initializeFavorites() {
     showRating: false,
     showRemoveBtn: true,
     onStartClick: (exerciseId) => {
-      console.log('Favorites onStartClick called with ID:', exerciseId); // Debug log
       const exercise = favorites.find(ex => (ex._id || ex.id) === exerciseId);
-      console.log('Exercise found in favorites:', exercise); // Debug log
       if (exercise) {
         modal.showModal(exercise);
       } else {

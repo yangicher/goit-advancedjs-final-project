@@ -97,7 +97,6 @@ export class ExercisesList {
         e.preventDefault();
         e.stopPropagation();
         const exerciseId = btn.dataset.exerciseId;
-        console.log('Start button clicked, exercise ID:', exerciseId);
         this.onStartClick(exerciseId);
       });
     });
